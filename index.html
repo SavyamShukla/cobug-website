@@ -1,0 +1,800 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>COBUG — Build together. Skip the chaos.</title>
+  
+  <meta name="description" content="COBUG puts your team, tasks, code changes, reviews and AI in one workspace built around the project.">
+  <meta name="author" content="Savyam Shukla">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="COBUG — Build together. Skip the chaos.">
+  <meta property="og:description" content="One project. Every moving part in the same place. Download COBUG for Windows.">
+  <meta property="og:image" content="assets/COBUG_Platinum_Silver_Icon.svg">
+  <meta property="og:url" content="https://github.com/SavyamShukla/cobug-app">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon with official COBUG Platinum Silver Icon -->
+  <link rel="icon" type="image/svg+xml" href="assets/COBUG_Platinum_Silver_Icon.svg">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="cobug relative min-h-screen overflow-x-hidden bg-[#d5d9df] pt-0 text-[#111419] selection:bg-[#a4adb8] selection:text-black">
+
+  <!-- =====================================================
+      BACKGROUND PLATINUM AURORA & METALLIC GRAIN
+  ===================================================== -->
+  <div class="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[950px] overflow-hidden">
+    <div class="aurora absolute left-[-10%] top-[-200px] h-[650px] w-[750px] rounded-full bg-cyan-600/[0.08] blur-[150px]"></div>
+    <div class="aurora absolute right-[-10%] top-[-100px] h-[600px] w-[650px] rounded-full bg-violet-600/[0.09] blur-[150px]" style="animation-delay:-8s"></div>
+    <div class="grain absolute inset-0 [mask-image:linear-gradient(to_bottom,black,transparent)] opacity-75"></div>
+  </div>
+
+  <!-- =====================================================
+      NAVBAR
+  ===================================================== -->
+  <header class="relative z-10 border-b border-[#b8bfc8] bg-[#d5d9df]/90 backdrop-blur-xl shadow-xs">
+    <div class="mx-auto flex h-16 max-w-none items-center justify-between px-5 lg:px-8">
+
+      <!-- Logo with official Platinum Silver Icon -->
+      <a href="#" class="flex items-center gap-3 group">
+        <img
+          src="assets/COBUG_Platinum_Silver_Icon.svg"
+          alt="COBUG"
+          class="h-9 w-9 shrink-0 rounded-xl object-contain shadow-xs transition-transform group-hover:scale-105"
+        />
+        <span class="display text-lg font-bold text-[#111419] tracking-tight">
+          COBUG
+        </span>
+      </a>
+
+      <!-- Simple download CTA -->
+      <a
+        href="https://github.com/SavyamShukla/cobug-app/releases/download/v1.0.0/COBUG-Setup-0.1.0-x64.exe"
+        class="inline-flex items-center gap-2 rounded-xl bg-[#171a1f] px-5 py-2.5 text-sm font-semibold text-white shadow-md transition hover:bg-[#2b3038] hover:shadow-lg active:scale-95"
+      >
+        Download COBUG
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12h14M13 6l6 6-6 6"/>
+        </svg>
+      </a>
+
+    </div>
+  </header>
+
+  <!-- =====================================================
+      HERO SECTION
+  ===================================================== -->
+  <section class="mx-auto grid max-w-none gap-14 px-5 pb-24 pt-20 lg:grid-cols-[1.05fr_1fr] lg:items-center lg:px-8 lg:pt-28">
+
+    <div>
+
+      <p class="inline-flex items-center gap-2 rounded-full border border-[#b8bfc8] bg-[#e4e7eb]/80 px-3.5 py-1.5 text-sm text-[#343b45] shadow-xs">
+        <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-cyan-600"></span>
+        Now with COBUG AI
+      </p>
+
+      <h1 class="display mt-6 text-5xl font-extrabold leading-[0.98] text-[#111419] sm:text-7xl">
+        Build together.
+        <span class="block bg-gradient-to-r from-[#343b45] to-[#6c737d] bg-clip-text text-transparent">
+          Skip the chaos.
+        </span>
+      </h1>
+
+      <p class="mt-6 max-w-lg text-lg leading-relaxed text-[#3b424e]">
+        COBUG puts your team, tasks, code changes, reviews and AI in
+        one workspace built around the project.
+      </p>
+
+      <div class="mt-9 flex flex-col gap-3 sm:flex-row">
+
+        <a
+          href="https://github.com/SavyamShukla/cobug-app/releases/download/v1.0.0/COBUG-Setup-0.1.0-x64.exe"
+          class="group inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-[#171a1f] to-[#343a42] px-6 py-3.5 text-sm font-bold text-white shadow-lg transition hover:brightness-110 active:scale-95"
+        >
+          Download COBUG
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform group-hover:translate-x-0.5">
+            <path d="M5 12h14M13 6l6 6-6 6"/>
+          </svg>
+        </a>
+
+        <a
+          href="#how-it-works"
+          class="inline-flex items-center justify-center rounded-xl border border-[#b8bfc8] bg-[#e4e7eb]/60 px-6 py-3.5 text-sm font-semibold text-[#20242a] transition hover:bg-[#eaedf2]"
+        >
+          See how it works
+        </a>
+
+      </div>
+
+      <ul class="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm text-[#4e5561]">
+        <li class="flex items-center gap-1.5 font-medium">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-emerald-700">
+            <path d="m5 12 4 4L19 6"/>
+          </svg>
+          Private by default
+        </li>
+        <li class="flex items-center gap-1.5 font-medium">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-emerald-700">
+            <path d="m5 12 4 4L19 6"/>
+          </svg>
+          Develops locally
+        </li>
+        <li class="flex items-center gap-1.5 font-medium">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-emerald-700">
+            <path d="m5 12 4 4L19 6"/>
+          </svg>
+          AI-powered
+        </li>
+      </ul>
+
+    </div>
+
+    <!-- HERO FLOW VISUAL (Brushed Platinum Panel) -->
+    <div class="relative rounded-[22px] border border-[#a8afb8] bg-gradient-to-b from-[#e5e9ee] to-[#d0d5db] p-2 shadow-[0_20px_50px_-20px_rgba(32,36,42,0.18)]">
+      <div class="rounded-[16px] bg-[#d9dde2] p-3 sm:p-4 border border-[#c2c8d1]">
+
+        <div class="mb-1.5 flex items-center justify-between text-[11px] text-[#4e5561]">
+          <span class="font-semibold uppercase tracking-wider">Live project flow</span>
+          <span class="flex items-center gap-1 text-emerald-700 font-semibold">
+            <span class="h-1.5 w-1.5 rounded-full bg-emerald-600"></span>
+            All synced
+          </span>
+        </div>
+
+        <svg
+          viewBox="0 0 520 380"
+          class="w-full max-h-[360px]"
+          role="img"
+          aria-label="Three personal workspaces flow through review into Main"
+        >
+          <!-- Rahul's lane (cyan) -->
+          <g>
+            <text x="70" y="58" fill="#343b45" font-size="13" font-weight="700">Rahul's workspace</text>
+            <path d="M70,80 H190 C260,80 270,190 340,190 H460" stroke="#0284c7" stroke-opacity="0.35" stroke-width="2" fill="none"/>
+            <path d="M70,80 H190 C260,80 270,190 340,190 H460" stroke="#0284c7" stroke-width="2" fill="none" class="flow"/>
+            <circle cx="70" cy="80" r="6" fill="#0284c7"/>
+            <circle r="5" fill="#0284c7">
+              <animateMotion dur="3.6s" begin="0s" repeatCount="indefinite" path="M70,80 H190 C260,80 270,190 340,190 H460"/>
+            </circle>
+          </g>
+
+          <!-- Ankit's lane (violet) -->
+          <g>
+            <text x="70" y="168" fill="#343b45" font-size="13" font-weight="700">Ankit's workspace</text>
+            <path d="M70,190 H190 C260,190 270,190 340,190 H460" stroke="#7c3aed" stroke-opacity="0.35" stroke-width="2" fill="none"/>
+            <path d="M70,190 H190 C260,190 270,190 340,190 H460" stroke="#7c3aed" stroke-width="2" fill="none" class="flow"/>
+            <circle cx="70" cy="190" r="6" fill="#7c3aed"/>
+            <circle r="5" fill="#7c3aed">
+              <animateMotion dur="3.6s" begin="0.9s" repeatCount="indefinite" path="M70,190 H190 C260,190 270,190 340,190 H460"/>
+            </circle>
+          </g>
+
+          <!-- Savyam's lane (pink) -->
+          <g>
+            <text x="70" y="278" fill="#343b45" font-size="13" font-weight="700">Savyam's workspace</text>
+            <path d="M70,300 H190 C260,300 270,190 340,190 H460" stroke="#db2777" stroke-opacity="0.35" stroke-width="2" fill="none"/>
+            <path d="M70,300 H190 C260,300 270,190 340,190 H460" stroke="#db2777" stroke-width="2" fill="none" class="flow"/>
+            <circle cx="70" cy="300" r="6" fill="#db2777"/>
+            <circle r="5" fill="#db2777">
+              <animateMotion dur="3.6s" begin="1.8s" repeatCount="indefinite" path="M70,300 H190 C260,300 270,190 340,190 H460"/>
+            </circle>
+          </g>
+
+          <!-- Review Box -->
+          <rect x="322" y="150" width="36" height="80" rx="12" fill="#171a1f" stroke="#c2c8d1" stroke-width="1.5"/>
+          <path d="m331 190 5 5 10-11" stroke="#34d399" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="340" y="252" text-anchor="middle" fill="#4e5561" font-size="12" font-weight="600">Human/AI review</text>
+
+          <!-- Main Circle -->
+          <circle cx="460" cy="190" r="22" fill="#d97706" fill-opacity="0.15"/>
+          <circle cx="460" cy="190" r="9" fill="#d97706"/>
+          <text x="460" y="236" text-anchor="middle" fill="#92400e" font-size="14" font-weight="800">Main</text>
+        </svg>
+
+        <div class="mt-1.5 grid grid-cols-3 gap-1.5 text-center text-[11px]">
+          <div class="rounded-lg border border-[#b8bfc8] bg-[#eaedf2] py-2 shadow-xs">
+            <p class="display text-lg font-bold text-[#111419]">12</p>
+            <p class="mt-0.5 text-[#555c66] font-medium">files changed</p>
+          </div>
+          <div class="rounded-lg border border-[#b8bfc8] bg-[#eaedf2] py-2 shadow-xs">
+            <p class="display text-lg font-bold text-[#111419]">3</p>
+            <p class="mt-0.5 text-[#555c66] font-medium">workspaces</p>
+          </div>
+          <div class="rounded-lg border border-[#b8bfc8] bg-[#eaedf2] py-2 shadow-xs">
+            <p class="display text-lg font-bold text-[#111419]">1</p>
+            <p class="mt-0.5 text-[#555c66] font-medium">review waiting</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+  <!-- =====================================================
+      PROBLEM STATEMENT (Platinum Contrast)
+  ===================================================== -->
+  <section class="mx-auto max-w-4xl px-5 py-20 text-center lg:px-8">
+    <p class="display text-3xl font-bold leading-snug text-[#4e5561] sm:text-4xl">
+      Tasks live in one app. Code in another. Chat somewhere else.{" "}
+      <span class="text-[#111419]">
+        COBUG brings the whole workflow together
+      </span>{" "}
+      so your team can build instead of coordinate.
+    </p>
+  </section>
+
+  <!-- =====================================================
+      FEATURES ROTATING DIAL
+  ===================================================== -->
+  <section id="features" class="relative mx-auto max-w-7xl px-5 py-24 lg:px-8">
+    
+    <!-- Ambient Light -->
+    <div class="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+      <div class="fx-drift absolute left-[6%] top-10 h-72 w-72 rounded-full bg-cyan-600/[0.05] blur-[110px]"></div>
+      <div class="fx-drift absolute right-[4%] top-1/2 h-80 w-80 rounded-full bg-violet-600/[0.06] blur-[120px]" style="animation-delay: -6s"></div>
+    </div>
+
+    <!-- Section Heading -->
+    <div class="max-w-3xl">
+      <p class="mb-4 flex items-center gap-2.5 text-sm font-semibold text-cyan-800">
+        <span class="relative flex h-1.5 w-1.5">
+          <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-600 opacity-70"></span>
+          <span class="relative inline-flex h-1.5 w-1.5 rounded-full bg-cyan-700"></span>
+        </span>
+        Built for teams
+      </p>
+
+      <h2 class="display text-4xl font-extrabold leading-tight text-[#111419] sm:text-6xl">
+        One project. Every moving part in the same place.
+      </h2>
+    </div>
+
+    <!-- Dial on the left, active content on the right -->
+    <div id="dial-container" class="mt-14 grid items-center gap-6 lg:mt-20 lg:grid-cols-[auto_1fr] lg:gap-x-20">
+      
+      <!-- The Dial Wheel Component -->
+      <div class="relative mx-auto p-8 lg:mx-0">
+        <div class="relative h-[210px] w-[210px] sm:h-[250px] sm:w-[250px]">
+          
+          <!-- Soft glow in middle -->
+          <div id="dial-glow" class="absolute inset-8 rounded-full blur-2xl transition-colors duration-700 bg-[rgba(103,232,249,0.18)]"></div>
+
+          <!-- SVG Ring + Arc Timer -->
+          <svg viewBox="0 0 100 100" class="absolute inset-0 h-full w-full" fill="none" aria-hidden="true">
+            <circle cx="50" cy="50" r="49.5" stroke="rgba(168,175,184,0.4)" stroke-width="0.8" />
+            <circle
+              id="dial-arc"
+              cx="50" cy="50" r="49.5"
+              pathLength="1"
+              stroke="rgb(14,165,233)"
+              stroke-width="1.2"
+              stroke-linecap="round"
+              class="fx-arc"
+              style="animation-duration: 6000ms; transition: opacity .4s ease, stroke .7s ease;"
+            />
+          </svg>
+
+          <!-- Turning Inner Ring -->
+          <div id="dial-wheel" class="absolute inset-0 transition-transform duration-[900ms]" style="transition-timing-function: cubic-bezier(.65,0,.2,1);">
+            <div class="absolute inset-[16%] rounded-full border border-dashed border-[#a8afb8]"></div>
+
+            <!-- Slot 0: Right (Collaboration) -->
+            <div class="absolute" style="left: 100%; top: 50%; transform: translate(-50%, -50%);">
+              <button
+                type="button"
+                data-index="0"
+                class="dial-btn flex h-14 w-14 items-center justify-center rounded-full bg-[#eaedf2] text-cyan-700 border border-[#b8bfc8] shadow-md transition-all duration-[900ms]"
+                aria-label="Collaboration"
+              >
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M9 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM3 20c.5-3.5 2.5-5 6-5s5.5 1.5 6 5M16 5.5a3 3 0 0 1 0 5.8M17 15c2.2.3 3.6 1.9 4 5"/>
+                </svg>
+              </button>
+            </div>
+
+            <!-- Slot 1: Top (Workspace) -->
+            <div class="absolute" style="left: 50%; top: 0%; transform: translate(-50%, -50%);">
+              <button
+                type="button"
+                data-index="1"
+                class="dial-btn flex h-14 w-14 items-center justify-center rounded-full bg-[#eaedf2] text-[#4e5561] border border-[#b8bfc8] shadow-xs transition-all duration-[900ms]"
+                aria-label="Workspace"
+              >
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M6 4v9a5 5 0 0 0 5 5h7M6 4a2 2 0 1 0 0 .01M18 18a2 2 0 1 0 0 .01"/>
+                </svg>
+              </button>
+            </div>
+
+            <!-- Slot 2: Left (Local Development) -->
+            <div class="absolute" style="left: 0%; top: 50%; transform: translate(-50%, -50%);">
+              <button
+                type="button"
+                data-index="2"
+                class="dial-btn flex h-14 w-14 items-center justify-center rounded-full bg-[#eaedf2] text-[#4e5561] border border-[#b8bfc8] shadow-xs transition-all duration-[900ms]"
+                aria-label="Local development"
+              >
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m8 9-4 3 4 3M16 9l4 3-4 3M14 5l-4 14"/>
+                </svg>
+              </button>
+            </div>
+
+            <!-- Slot 3: Bottom (Quality Control) -->
+            <div class="absolute" style="left: 50%; top: 100%; transform: translate(-50%, -50%);">
+              <button
+                type="button"
+                data-index="3"
+                class="dial-btn flex h-14 w-14 items-center justify-center rounded-full bg-[#eaedf2] text-[#4e5561] border border-[#b8bfc8] shadow-xs transition-all duration-[900ms]"
+                aria-label="Quality control"
+              >
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 3 5 6v5c0 4.5 3 8 7 10 4-2 7-5.5 7-10V6l-7-3Z"/>
+                </svg>
+              </button>
+            </div>
+
+          </div>
+
+          <!-- Small Center Core -->
+          <div id="dial-core" class="absolute left-1/2 top-1/2 h-2.5 w-2.5 -translate-x-1/2 -translate-y-1/2 rounded-full transition-colors duration-700 bg-[rgb(14,165,233)]"></div>
+
+        </div>
+
+        <!-- Pointer toward content -->
+        <div id="dial-pointer" class="pointer-events-none absolute left-full top-1/2 hidden h-px w-20 -translate-y-1/2 lg:block" style="background: linear-gradient(to right, rgba(14,165,233,0.9), transparent);" aria-hidden="true"></div>
+      </div>
+
+      <!-- Feature Content Panels -->
+      <div class="flex min-h-[420px] items-center">
+        
+        <!-- Panel 0: Collaboration -->
+        <div id="feature-panel-0" class="dial-panel w-full">
+          <p class="flex items-center gap-3 text-sm font-bold text-cyan-800">
+            <span class="h-px w-10 bg-cyan-700"></span>
+            Collaboration
+          </p>
+          <h3 class="display mt-4 text-3xl font-bold leading-tight text-[#111419] sm:text-5xl">
+            Your team, around the project
+          </h3>
+          <p class="mt-4 max-w-lg text-base leading-relaxed text-[#3b424e]">
+            Members, tasks, chat, files and activity share one context, so nobody has to ask where things are.
+          </p>
+          <div class="mt-10 flex">
+            <!-- Open-air team visual -->
+            <div class="relative w-full max-w-md">
+              <div class="pointer-events-none absolute -left-10 -top-10 h-44 w-44 rounded-full bg-cyan-500/10 blur-3xl"></div>
+              <div class="relative flex flex-wrap items-center gap-y-4">
+                <div class="flex items-center">
+                  <span class="fx-float relative flex h-14 w-14 items-center justify-center rounded-full border-[3px] border-[#d5d9df] bg-gradient-to-br from-cyan-600 to-blue-700 text-base font-bold text-white shadow-lg z-10">
+                    R
+                    <span class="absolute bottom-0 right-0 h-3.5 w-3.5 rounded-full border-2 border-[#d5d9df] bg-emerald-500">
+                      <span class="absolute inset-0 animate-ping rounded-full bg-emerald-400/70"></span>
+                    </span>
+                  </span>
+                  <span class="fx-float relative -ml-3 flex h-14 w-14 items-center justify-center rounded-full border-[3px] border-[#d5d9df] bg-gradient-to-br from-violet-600 to-indigo-700 text-base font-bold text-white shadow-lg z-9" style="animation-delay: -0.9s">
+                    A
+                    <span class="absolute bottom-0 right-0 h-3.5 w-3.5 rounded-full border-2 border-[#d5d9df] bg-emerald-500"></span>
+                  </span>
+                  <span class="fx-float relative -ml-3 flex h-14 w-14 items-center justify-center rounded-full border-[3px] border-[#d5d9df] bg-gradient-to-br from-pink-600 to-rose-700 text-base font-bold text-white shadow-lg z-8" style="animation-delay: -1.8s">
+                    S
+                    <span class="absolute bottom-0 right-0 h-3.5 w-3.5 rounded-full border-2 border-[#d5d9df] bg-emerald-500"></span>
+                  </span>
+                  <span class="fx-float relative -ml-3 flex h-14 w-14 items-center justify-center rounded-full border-[3px] border-[#d5d9df] bg-gradient-to-br from-amber-600 to-orange-700 text-base font-bold text-white shadow-lg z-7" style="animation-delay: -2.7s">
+                    M
+                    <span class="absolute bottom-0 right-0 h-3.5 w-3.5 rounded-full border-2 border-[#d5d9df] bg-emerald-500"></span>
+                  </span>
+                </div>
+                <span class="ml-5 text-sm font-semibold text-[#343b45]">
+                  4 people working right now
+                </span>
+              </div>
+              <div class="relative mt-8 flex items-center gap-3 text-xs text-[#4e5561] font-medium">
+                <span class="h-2 w-2 animate-pulse rounded-full bg-emerald-600"></span>
+                Team activity is live
+                <span class="relative ml-1 h-px flex-1 overflow-hidden bg-[#a8afb8]">
+                  <span class="fx-scan absolute inset-y-0 w-1/3 bg-gradient-to-r from-transparent via-emerald-600 to-transparent"></span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 1: Workspace -->
+        <div id="feature-panel-1" class="dial-panel w-full hidden">
+          <p class="flex items-center gap-3 text-sm font-bold text-violet-800">
+            <span class="h-px w-10 bg-violet-700"></span>
+            Workspace
+          </p>
+          <h3 class="display mt-4 text-3xl font-bold leading-tight text-[#111419] sm:text-5xl">
+            A personal workspace for everyone
+          </h3>
+          <p class="mt-4 max-w-lg text-base leading-relaxed text-[#3b424e]">
+            Work freely without touching Main. Your changes stay yours until they are ready.
+          </p>
+          <div class="mt-10 flex">
+            <div class="relative w-full max-w-md font-mono text-sm bg-[#eaedf2] p-4 rounded-xl border border-[#b8bfc8]">
+              <div class="flex h-10 items-center transition-transform hover:translate-x-1.5">
+                <span class="h-2.5 w-2.5 rounded-full bg-amber-500 mr-3"></span>
+                <span class="text-amber-800 font-bold">Main</span>
+                <span class="mx-3 h-px flex-1 border-t border-dotted border-[#a8afb8]"></span>
+                <span class="text-[#555c66] text-xs font-semibold">protected</span>
+              </div>
+              <div class="flex h-10 items-center transition-transform hover:translate-x-1.5">
+                <span class="h-2 w-2 rounded-full bg-cyan-600 mr-3.5"></span>
+                <span class="text-cyan-900 font-semibold">rahul / auth-module</span>
+                <span class="mx-3 h-px flex-1 border-t border-dotted border-[#a8afb8]"></span>
+                <span class="text-[#555c66] text-xs">12 changes</span>
+              </div>
+              <div class="flex h-10 items-center transition-transform hover:translate-x-1.5">
+                <span class="h-2 w-2 rounded-full bg-violet-600 mr-3.5"></span>
+                <span class="text-violet-900 font-semibold">ankit / dashboard</span>
+                <span class="mx-3 h-px flex-1 border-t border-dotted border-[#a8afb8]"></span>
+                <span class="text-[#555c66] text-xs">5 changes</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 2: Local Development -->
+        <div id="feature-panel-2" class="dial-panel w-full hidden">
+          <p class="flex items-center gap-3 text-sm font-bold text-emerald-800">
+            <span class="h-px w-10 bg-emerald-700"></span>
+            Local development
+          </p>
+          <h3 class="display mt-4 text-3xl font-bold leading-tight text-[#111419] sm:text-5xl">
+            Code on your own machine
+          </h3>
+          <p class="mt-4 max-w-lg text-base leading-relaxed text-[#3b424e]">
+            Open your workspace in VS Code and work the way you always do.
+          </p>
+          <div class="mt-10 flex">
+            <div class="w-full max-w-md border-l-3 border-emerald-600 pl-6 font-mono bg-[#eaedf2] py-4 pr-4 rounded-r-xl border-y border-r border-[#b8bfc8]">
+              <p class="text-[11px] text-[#4e5561] uppercase tracking-wider font-bold">Terminal</p>
+              <p class="mt-3 text-lg text-[#171a1f] font-semibold">
+                <span id="terminal-typewriter-text">$ cobug open</span>
+              </p>
+              <p id="terminal-result-line" class="mt-2 text-base text-emerald-800 font-bold transition-all duration-500 opacity-0 translate-y-2">
+                <span class="mr-2">✓</span>
+                Opened in VS Code
+              </p>
+              <span class="fx-blink mt-2 inline-block h-4 w-2 bg-emerald-700"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 3: Quality Control -->
+        <div id="feature-panel-3" class="dial-panel w-full hidden">
+          <p class="flex items-center gap-3 text-sm font-bold text-amber-800">
+            <span class="h-px w-10 bg-amber-700"></span>
+            Quality control
+          </p>
+          <h3 class="display mt-4 text-3xl font-bold leading-tight text-[#111419] sm:text-5xl">
+            Review before Main
+          </h3>
+          <p class="mt-4 max-w-lg text-base leading-relaxed text-[#3b424e]">
+            Turn finished work into a request. Check diffs, tests and builds first.
+          </p>
+          <div class="mt-10 flex">
+            <div class="w-full max-w-md space-y-2 font-mono text-sm bg-[#eaedf2] p-4 rounded-xl border border-[#b8bfc8]">
+              <p class="flex items-center border-l-3 border-emerald-600 bg-emerald-100/70 py-2 pl-4 text-emerald-900 font-semibold rounded-r">
+                <span class="mr-2 font-bold text-emerald-700">+</span>
+                validateToken(user)
+              </p>
+              <p class="flex items-center border-l-3 border-rose-600 bg-rose-100/70 py-2 pl-4 text-rose-900 font-semibold rounded-r">
+                <span class="mr-2 font-bold text-rose-700">−</span>
+                return true;
+              </p>
+              <div class="flex items-center gap-2 pl-4 pt-2 text-xs text-[#343b45] font-sans font-semibold">
+                <span class="flex h-5 w-5 items-center justify-center rounded-full bg-emerald-200 text-emerald-800 font-bold">✓</span>
+                Tests passed · Build green
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- =====================================================
+      HOW IT WORKS (Platinum Surface)
+  ===================================================== -->
+  <section id="how-it-works" class="border-t border-[#b8bfc8] bg-[#cbd1d8]/50 py-28">
+    <div class="mx-auto max-w-none px-5 lg:px-8">
+      <h2 class="display max-w-2xl text-4xl font-extrabold sm:text-5xl text-[#111419]">
+        From idea to Main, one step at a time.
+      </h2>
+
+      <ol class="relative mt-16 grid gap-10 sm:grid-cols-2 lg:grid-cols-5 lg:gap-6">
+        <div class="absolute left-0 right-0 top-[19px] hidden h-px bg-gradient-to-r from-cyan-600/50 via-violet-600/40 to-amber-600/50 lg:block"></div>
+
+        <li class="relative">
+          <span class="relative z-10 flex h-10 w-10 items-center justify-center rounded-full border border-[#a8afb8] bg-[#eaedf2] text-sm font-bold text-cyan-800 shadow-xs">1</span>
+          <h3 class="display mt-5 text-lg font-bold text-[#111419]">Plan</h3>
+          <p class="mt-1.5 max-w-[200px] text-sm leading-relaxed text-[#3b424e]">Create tasks and set up the project.</p>
+        </li>
+
+        <li class="relative">
+          <span class="relative z-10 flex h-10 w-10 items-center justify-center rounded-full border border-[#a8afb8] bg-[#eaedf2] text-sm font-bold text-cyan-800 shadow-xs">2</span>
+          <h3 class="display mt-5 text-lg font-bold text-[#111419]">Work</h3>
+          <p class="mt-1.5 max-w-[200px] text-sm leading-relaxed text-[#3b424e]">Build in your own workspace.</p>
+        </li>
+
+        <li class="relative">
+          <span class="relative z-10 flex h-10 w-10 items-center justify-center rounded-full border border-[#a8afb8] bg-[#eaedf2] text-sm font-bold text-cyan-800 shadow-xs">3</span>
+          <h3 class="display mt-5 text-lg font-bold text-[#111419]">Sync</h3>
+          <p class="mt-1.5 max-w-[200px] text-sm leading-relaxed text-[#3b424e]">Keep your work safe and up to date.</p>
+        </li>
+
+        <li class="relative">
+          <span class="relative z-10 flex h-10 w-10 items-center justify-center rounded-full border border-[#a8afb8] bg-[#eaedf2] text-sm font-bold text-cyan-800 shadow-xs">4</span>
+          <h3 class="display mt-5 text-lg font-bold text-[#111419]">Review</h3>
+          <p class="mt-1.5 max-w-[200px] text-sm leading-relaxed text-[#3b424e]">Your team checks changes before Main.</p>
+        </li>
+
+        <li class="relative">
+          <span class="relative z-10 flex h-10 w-10 items-center justify-center rounded-full border border-[#a8afb8] bg-[#eaedf2] text-sm font-bold text-cyan-800 shadow-xs">5</span>
+          <h3 class="display mt-5 text-lg font-bold text-[#111419]">Grow</h3>
+          <p class="mt-1.5 max-w-[200px] text-sm leading-relaxed text-[#3b424e]">Learn from activity and AI summaries.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- =====================================================
+      AI SECTION
+  ===================================================== -->
+  <section id="ai" class="relative border-y border-[#b8bfc8] bg-[#d5d9df] py-28">
+    <div class="mx-auto grid max-w-none gap-14 px-5 lg:grid-cols-2 lg:items-center lg:px-8">
+
+      <div>
+        <h2 class="display text-4xl font-extrabold text-[#111419] sm:text-5xl">
+          An assistant that has read your project.
+        </h2>
+
+        <p class="mt-5 max-w-md text-base leading-relaxed text-[#3b424e]">
+          COBUG AI sees the tasks, files, activity and reviews you are
+          allowed to see. Ask it anything about the work.
+        </p>
+
+        <ul class="mt-8 grid gap-3 sm:grid-cols-2">
+          <li class="flex items-center gap-2.5 text-sm font-medium text-[#20242a]">
+            <span class="flex h-5 w-5 items-center justify-center rounded-full bg-violet-200 text-violet-800">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 12 4 4L19 6"/></svg>
+            </span>
+            Ask COBUG
+          </li>
+          <li class="flex items-center gap-2.5 text-sm font-medium text-[#20242a]">
+            <span class="flex h-5 w-5 items-center justify-center rounded-full bg-violet-200 text-violet-800">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 12 4 4L19 6"/></svg>
+            </span>
+            Catch Me Up
+          </li>
+          <li class="flex items-center gap-2.5 text-sm font-medium text-[#20242a]">
+            <span class="flex h-5 w-5 items-center justify-center rounded-full bg-violet-200 text-violet-800">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 12 4 4L19 6"/></svg>
+            </span>
+            Explain Code
+          </li>
+          <li class="flex items-center gap-2.5 text-sm font-medium text-[#20242a]">
+            <span class="flex h-5 w-5 items-center justify-center rounded-full bg-violet-200 text-violet-800">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 12 4 4L19 6"/></svg>
+            </span>
+            AI Code Review
+          </li>
+          <li class="flex items-center gap-2.5 text-sm font-medium text-[#20242a]">
+            <span class="flex h-5 w-5 items-center justify-center rounded-full bg-violet-200 text-violet-800">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 12 4 4L19 6"/></svg>
+            </span>
+            Task Assistant
+          </li>
+          <li class="flex items-center gap-2.5 text-sm font-medium text-[#20242a]">
+            <span class="flex h-5 w-5 items-center justify-center rounded-full bg-violet-200 text-violet-800">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 12 4 4L19 6"/></svg>
+            </span>
+            Project Summary
+          </li>
+        </ul>
+      </div>
+
+      <!-- Interactive AI Chat Card (Platinum Silver Container) -->
+      <div class="relative rounded-3xl border border-[#a8afb8] bg-[#eaedf2] p-6 shadow-[0_20px_50px_-20px_rgba(32,36,42,0.18)]">
+        
+        <div class="mb-5 flex items-center gap-3">
+          <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-violet-200 text-violet-800 shadow-xs">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="m12 3-1.4 5.1L6 10l4.6 1.9L12 17l1.4-5.1L18 10l-4.6-1.9L12 3Z"/>
+            </svg>
+          </span>
+          <div>
+            <p class="text-sm font-bold text-[#111419]">COBUG AI</p>
+            <p class="text-xs text-[#555c66] font-medium">Pick a question</p>
+          </div>
+        </div>
+
+        <!-- Question Pills -->
+        <div class="mb-5 flex flex-wrap gap-2">
+          <button type="button" class="ai-question-btn rounded-full border border-violet-500 bg-violet-100 text-violet-900 px-3.5 py-1.5 text-xs font-bold transition shadow-xs">
+            What changed while I was away?
+          </button>
+          <button type="button" class="ai-question-btn rounded-full border border-[#b8bfc8] bg-[#dce1e7] text-[#2e3540] hover:text-[#111419] px-3.5 py-1.5 text-xs font-semibold transition">
+            Explain LoginService
+          </button>
+          <button type="button" class="ai-question-btn rounded-full border border-[#b8bfc8] bg-[#dce1e7] text-[#2e3540] hover:text-[#111419] px-3.5 py-1.5 text-xs font-semibold transition">
+            Summarize this week
+          </button>
+        </div>
+
+        <!-- Live Question and Answer Box -->
+        <div class="space-y-3" aria-live="polite">
+          <div id="ai-chat-question" class="max-w-[85%] rounded-2xl rounded-tl-sm bg-[#d0d6de] px-4 py-3 text-sm text-[#111419] font-semibold border border-[#b8bfc8]">
+            What changed while I was away?
+          </div>
+
+          <div class="ml-auto max-w-[90%] rounded-2xl rounded-tr-sm border border-violet-300 bg-violet-50/90 px-4 py-3 text-sm leading-relaxed text-[#1e232b] shadow-xs">
+            <p id="ai-chat-answer" class="font-medium">
+              3 tasks were completed, Rahul pushed 8 file changes, and the authentication module is ready for review.
+            </p>
+            <p class="mt-2 flex items-center gap-1.5 text-xs text-violet-700 font-bold">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="m12 3-1.4 5.1L6 10l4.6 1.9L12 17l1.4-5.1L18 10l-4.6-1.9L12 3Z"/>
+              </svg>
+              Based on project activity
+            </p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =====================================================
+      DEVELOPERS
+  ===================================================== -->
+  <section class="mx-auto grid max-w-none gap-14 px-5 py-28 lg:grid-cols-2 lg:items-center lg:px-8">
+    
+    <div class="order-2 overflow-hidden rounded-2xl border border-[#a8afb8] bg-[#eaedf2] shadow-xl lg:order-1">
+      <div class="flex items-center gap-2 border-b border-[#c2c8d1] px-4 py-3 bg-[#dde1e7]">
+        <span class="h-2.5 w-2.5 rounded-full bg-rose-500"></span>
+        <span class="h-2.5 w-2.5 rounded-full bg-amber-500"></span>
+        <span class="h-2.5 w-2.5 rounded-full bg-emerald-500"></span>
+        <span class="ml-3 text-xs text-[#343b45] font-mono font-bold">cobug-agent</span>
+      </div>
+
+      <div class="space-y-2 p-6 font-mono text-[13px] leading-6 bg-[#111419] text-white">
+        <p class="text-slate-400">$ cobug status</p>
+        <p class="text-emerald-400">✓ Workspace connected</p>
+        <p class="text-emerald-400">✓ 12 files synchronized</p>
+        <p class="text-cyan-400">→ Watching for changes</p>
+        <p class="pt-2 text-slate-400">Last sync: <span class="text-slate-200">just now</span></p>
+        <p class="text-slate-400">Mode: <span class="text-slate-200">On Save</span></p>
+      </div>
+    </div>
+
+    <div class="order-1 lg:order-2">
+      <h2 class="display text-4xl font-extrabold sm:text-5xl text-[#111419]">
+        Your editor stays yours.
+      </h2>
+
+      <p class="mt-5 max-w-md text-base leading-relaxed text-[#3b424e]">
+        Use VS Code, IntelliJ, Cursor or any tool you like. COBUG
+        connects your local work to the project.
+      </p>
+
+      <ul class="mt-8 space-y-3.5 font-medium">
+        <li class="flex items-start gap-3 text-[#20242a] text-sm">
+          <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-cyan-200 text-cyan-800">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 12 4 4L19 6"/></svg>
+          </span>
+          Open your workspace in VS Code
+        </li>
+        <li class="flex items-start gap-3 text-[#20242a] text-sm">
+          <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-cyan-200 text-cyan-800">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 12 4 4L19 6"/></svg>
+          </span>
+          Choose when your work syncs
+        </li>
+        <li class="flex items-start gap-3 text-[#20242a] text-sm">
+          <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-cyan-200 text-cyan-800">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 12 4 4L19 6"/></svg>
+          </span>
+          See file changes and history
+        </li>
+        <li class="flex items-start gap-3 text-[#20242a] text-sm">
+          <span class="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-cyan-200 text-cyan-800">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m5 12 4 4L19 6"/></svg>
+          </span>
+          Send finished work for review
+        </li>
+      </ul>
+    </div>
+
+  </section>
+
+  <!-- =====================================================
+      CTA SECTION (Platinum Metallic)
+  ===================================================== -->
+  <section class="px-5 pb-28 lg:px-8">
+    <div class="relative mx-auto max-w-6xl overflow-hidden rounded-[32px] border border-[#a8afb8] bg-gradient-to-br from-[#eaedf2] via-[#dce1e7] to-[#cbd1d8] px-6 py-20 text-center sm:px-16 shadow-xl">
+      
+      <div class="grain absolute inset-0 opacity-70"></div>
+
+      <div class="relative">
+        <h2 class="display mx-auto max-w-3xl text-4xl font-extrabold sm:text-6xl text-[#111419]">
+          Give your next project a better home.
+        </h2>
+
+        <p class="mx-auto mt-5 max-w-md text-[#343b45] font-medium">
+          Bring your team together, build on your own, and review
+          with confidence.
+        </p>
+
+        <div class="mt-9 flex flex-col justify-center gap-3 sm:flex-row">
+          <a
+            href="https://github.com/SavyamShukla/cobug-app/releases/download/v1.0.0/COBUG-Setup-0.1.0-x64.exe"
+            class="inline-flex items-center justify-center gap-2 rounded-xl bg-[#171a1f] px-7 py-3.5 text-sm font-bold text-white transition hover:bg-[#2b3038] shadow-lg active:scale-95"
+          >
+            Download COBUG
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M5 12h14M13 6l6 6-6 6"/>
+            </svg>
+          </a>
+
+          <a
+            href="#features"
+            class="inline-flex items-center justify-center rounded-xl border border-[#a8afb8] bg-[#eaedf2]/70 px-7 py-3.5 text-sm font-semibold text-[#20242a] transition hover:bg-[#eaedf2]"
+          >
+            Explore features
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =====================================================
+      FOOTER
+  ===================================================== -->
+  <footer id="docs" class="border-t border-[#b8bfc8] bg-[#cbd1d8]/60">
+    <div class="mx-auto flex max-w-none flex-col gap-5 px-5 py-8 sm:flex-row sm:items-center sm:justify-between lg:px-8">
+      
+      <!-- Brand with official Platinum Silver icon -->
+      <div class="flex items-center gap-3">
+        <img
+          src="assets/COBUG_Platinum_Silver_Icon.svg"
+          alt="COBUG Logo"
+          class="h-8 w-8 shrink-0 rounded-xl object-contain shadow-xs"
+        />
+
+        <span class="display font-bold text-[#111419]">
+          COBUG
+        </span>
+
+        <span class="text-sm text-[#4e5561] font-medium">
+          Collaborate. Build. Grow.
+        </span>
+      </div>
+
+      <p class="text-sm text-[#4e5561] font-medium">
+        © 2026 COBUG. All rights reserved.
+      </p>
+
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="script.js"></script>
+</body>
+</html>

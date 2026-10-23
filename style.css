@@ -1,0 +1,186 @@
+/* COBUG Brushed Platinum Silver Theme & Animations */
+@import url('https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  --bg-main: #d5d9df;
+  --bg-main-light: #e0e3e8;
+  --bg-card: #e5e9ee;
+  --bg-card-elevated: #eaedf2;
+  --bg-surface: #cdd2d9;
+  --border-platinum: #b2b9c3;
+  --border-light: #c2c8d1;
+  --border-subtle: #a4adb8;
+  --text-dark: #111419;
+  --text-body: #2e3540;
+  --text-muted: #4e5561;
+  --text-dim: #666e7b;
+}
+
+body {
+  font-family: 'Instrument Sans', system-ui, -apple-system, sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-dark);
+}
+
+.cobug {
+  font-family: 'Instrument Sans', system-ui, sans-serif;
+}
+
+.cobug .display {
+  font-family: 'Bricolage Grotesque', 'Instrument Sans', sans-serif;
+  letter-spacing: -0.035em;
+}
+
+/* Brushed Platinum Metallic Grain */
+.cobug .grain {
+  background-image: radial-gradient(
+    rgba(17, 20, 25, 0.08) 1px,
+    transparent 1px
+  );
+  background-size: 20px 20px;
+}
+
+/* Metallic Brushed Shimmer */
+.platinum-card {
+  background: linear-gradient(135deg, rgba(238, 241, 245, 0.9) 0%, rgba(222, 226, 232, 0.95) 100%);
+  border: 1px solid rgba(168, 175, 184, 0.5);
+  box-shadow: 0 4px 20px -2px rgba(32, 36, 42, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.platinum-card:hover {
+  border-color: rgba(140, 150, 162, 0.8);
+  box-shadow: 0 8px 30px -4px rgba(32, 36, 42, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+@keyframes drift {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(30px, -20px, 0);
+  }
+}
+
+.cobug .aurora {
+  animation: drift 16s ease-in-out infinite;
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: -24;
+  }
+}
+
+.cobug .flow {
+  stroke-dasharray: 4 8;
+  animation: dash 1.6s linear infinite;
+}
+
+/* Animations from dial & visual cards */
+@keyframes fxIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fxPanel {
+  from { opacity: 0; transform: translateX(26px); filter: blur(5px); }
+  to   { opacity: 1; transform: translateX(0);    filter: blur(0); }
+}
+
+@keyframes fxArc {
+  from { stroke-dashoffset: 1; }
+  to   { stroke-dashoffset: 0; }
+}
+
+@keyframes fxFloat {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-4px); }
+}
+
+@keyframes fxDrift {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%      { transform: translate(24px, -18px) scale(1.08); }
+  66%      { transform: translate(-18px, 16px) scale(0.95); }
+}
+
+@keyframes fxScan {
+  from { left: -35%; }
+  to   { left: 100%; }
+}
+
+@keyframes fxBlink {
+  0%, 49%   { opacity: 1; }
+  50%, 100% { opacity: 0; }
+}
+
+@keyframes fxPop {
+  0%   { transform: scale(0.4); }
+  60%  { transform: scale(1.25); }
+  100% { transform: scale(1); }
+}
+
+@keyframes fxPingSvg {
+  from { transform: scale(1); opacity: 0.6; }
+  to   { transform: scale(3); opacity: 0; }
+}
+
+.fx-reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  filter: blur(5px);
+  transition: opacity .8s cubic-bezier(.2,.8,.2,1),
+              transform .8s cubic-bezier(.2,.8,.2,1),
+              filter .8s cubic-bezier(.2,.8,.2,1);
+}
+.fx-reveal.is-in {
+  opacity: 1;
+  transform: none;
+  filter: blur(0);
+}
+
+.fx-arc {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation-name: fxArc;
+  animation-timing-function: linear;
+  animation-fill-mode: both;
+}
+
+.fx-float { animation: fxFloat 4s ease-in-out infinite; }
+.fx-drift { animation: fxDrift 18s ease-in-out infinite; }
+.fx-scan  { animation: fxScan 2.8s linear infinite; }
+.fx-blink { animation: fxBlink 1.1s steps(1) infinite; }
+.fx-pop   { animation: fxPop .6s ease-out 900ms both; }
+.fx-svg-ping {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: fxPingSvg 2s ease-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cobug .aurora,
+  .cobug .flow,
+  .fx-float,
+  .fx-drift,
+  .fx-scan,
+  .fx-blink,
+  .fx-pop,
+  .fx-svg-ping,
+  .fx-arc {
+    animation: none;
+  }
+  .fx-reveal {
+    transition: none;
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+}
+
+.cobug a:focus-visible,
+.cobug button:focus-visible,
+.cobug input:focus-visible {
+  outline: 2px solid #00d2ff;
+  outline-offset: 3px;
+  border-radius: 10px;
+}

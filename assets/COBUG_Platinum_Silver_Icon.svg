@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 176 177" role="img" aria-labelledby="title desc">
+<title id="title">COBUG Platinum icon</title>
+<desc id="desc">A premium monochrome, modular three-dimensional C mark on a metallic silver background.</desc>
+<defs>
+  <linearGradient id="background" x1="14" y1="8" x2="162" y2="170" gradientUnits="userSpaceOnUse">
+    <stop offset="0" stop-color="#FFFFFF"/>
+    <stop offset=".34" stop-color="#E8EBEF"/>
+    <stop offset=".7" stop-color="#C8CDD3"/>
+    <stop offset="1" stop-color="#F8F9FA"/>
+  </linearGradient>
+  <linearGradient id="edge" x1="9" y1="5" x2="168" y2="173" gradientUnits="userSpaceOnUse">
+    <stop offset="0" stop-color="#FFFFFF"/>
+    <stop offset=".48" stop-color="#A8AFB8"/>
+    <stop offset="1" stop-color="#FFFFFF"/>
+  </linearGradient>
+  <linearGradient id="topFace" x1="30" y1="42" x2="99" y2="81" gradientUnits="userSpaceOnUse">
+    <stop offset="0" stop-color="#454B54"/>
+    <stop offset="1" stop-color="#171A1F"/>
+  </linearGradient>
+  <linearGradient id="silverFace" x1="73" y1="27" x2="115" y2="66" gradientUnits="userSpaceOnUse">
+    <stop offset="0" stop-color="#FFFFFF"/>
+    <stop offset=".45" stop-color="#DDE1E6"/>
+    <stop offset="1" stop-color="#9AA2AC"/>
+  </linearGradient>
+  <linearGradient id="rightFace" x1="99" y1="63" x2="128" y2="95" gradientUnits="userSpaceOnUse">
+    <stop offset="0" stop-color="#6C737D"/>
+    <stop offset="1" stop-color="#30353D"/>
+  </linearGradient>
+  <linearGradient id="lowerTop" x1="69" y1="115" x2="122" y2="124" gradientUnits="userSpaceOnUse">
+    <stop offset="0" stop-color="#FDFDFE"/>
+    <stop offset="1" stop-color="#B8BEC6"/>
+  </linearGradient>
+  <linearGradient id="lowerLeft" x1="65" y1="120" x2="94" y2="155" gradientUnits="userSpaceOnUse">
+    <stop offset="0" stop-color="#555C66"/>
+    <stop offset="1" stop-color="#20242A"/>
+  </linearGradient>
+  <linearGradient id="lowerRight" x1="94" y1="135" x2="128" y2="145" gradientUnits="userSpaceOnUse">
+    <stop offset="0" stop-color="#383E46"/>
+    <stop offset="1" stop-color="#111419"/>
+  </linearGradient>
+  <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%">
+    <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#20242A" flood-opacity=".2"/>
+  </filter>
+</defs>
+
+<rect x="2" y="2" width="172" height="173" rx="31" fill="url(#background)"/>
+<rect x="2.5" y="2.5" width="171" height="172" rx="30.5" fill="none" stroke="url(#edge)" stroke-width="2.5"/>
+
+<g filter="url(#shadow)" stroke-linejoin="round">
+  <path d="M30 62 L65 42 L99 61 L65 81 Z" fill="url(#topFace)"/>
+  <path d="M65 42 L87 27 L128 50 L99 66 Z" fill="url(#silverFace)"/>
+  <path d="M30 62 L65 81 L65 132 L30 112 Z" fill="#292E35"/>
+  <path d="M30 112 L65 132 L65 147 L30 127 Z" fill="#555C66"/>
+  <path d="M99 66 L128 50 L128 82 L99 99 Z" fill="url(#rightFace)"/>
+  <path d="M65 116 L99 99 L128 116 L94 135 Z" fill="url(#lowerTop)"/>
+  <path d="M65 116 L94 135 L94 165 L65 147 Z" fill="url(#lowerLeft)"/>
+  <path d="M94 135 L128 116 L128 146 L94 165 Z" fill="url(#lowerRight)"/>
+</g>
+</svg>

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 360" role="img" aria-labelledby="title desc">
+<title id="title">COBUG — Collab, Build and Grow</title>
+<desc id="desc">COBUG logo and tagline.</desc>
+<defs>
+  <linearGradient id="edge" x1="8" y1="4" x2="169" y2="173" gradientUnits="userSpaceOnUse"><stop stop-color="#3EBBFF"/><stop offset=".52" stop-color="#3D7CFF"/><stop offset="1" stop-color="#8D5CFF"/></linearGradient>
+  <linearGradient id="topBlue" x1="35" y1="57" x2="101" y2="76" gradientUnits="userSpaceOnUse"><stop stop-color="#18B6FF"/><stop offset="1" stop-color="#168FF0"/></linearGradient>
+  <linearGradient id="topCyan" x1="73" y1="25" x2="112" y2="57" gradientUnits="userSpaceOnUse"><stop stop-color="#20D2F1"/><stop offset="1" stop-color="#13B7E7"/></linearGradient>
+  <linearGradient id="upperRight" x1="100" y1="63" x2="128" y2="84" gradientUnits="userSpaceOnUse"><stop stop-color="#237DF4"/><stop offset="1" stop-color="#176FE2"/></linearGradient>
+  <linearGradient id="lowerTop" x1="69" y1="115" x2="122" y2="124" gradientUnits="userSpaceOnUse"><stop stop-color="#B45AFF"/><stop offset="1" stop-color="#B34DF0"/></linearGradient>
+  <linearGradient id="lowerLeft" x1="65" y1="120" x2="94" y2="155" gradientUnits="userSpaceOnUse"><stop stop-color="#673CFF"/><stop offset="1" stop-color="#5930EA"/></linearGradient>
+  <linearGradient id="lowerRight" x1="94" y1="135" x2="128" y2="145" gradientUnits="userSpaceOnUse"><stop stop-color="#7436F3"/><stop offset="1" stop-color="#5424D7"/></linearGradient>
+  <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="5" stdDeviation="6" flood-color="#000" flood-opacity=".28"/></filter>
+</defs>
+<g transform="translate(35 10) scale(1.93)">
+  <rect x="2" y="2" width="172" height="173" rx="31" fill="#101722"/>
+  <rect x="2.5" y="2.5" width="171" height="172" rx="30.5" fill="none" stroke="url(#edge)" stroke-width="2.5"/>
+  <g filter="url(#shadow)" stroke-linejoin="round">
+    <path d="M30 62 L65 42 L99 61 L65 81 Z" fill="url(#topBlue)"/>
+    <path d="M65 42 L87 27 L128 50 L99 66 Z" fill="url(#topCyan)"/>
+    <path d="M30 62 L65 81 L65 132 L30 112 Z" fill="#167CF2"/>
+    <path d="M30 112 L65 132 L65 147 L30 127 Z" fill="#2454EE"/>
+    <path d="M99 66 L128 50 L128 82 L99 99 Z" fill="url(#upperRight)"/>
+    <path d="M65 116 L99 99 L128 116 L94 135 Z" fill="url(#lowerTop)"/>
+    <path d="M65 116 L94 135 L94 165 L65 147 Z" fill="url(#lowerLeft)"/>
+    <path d="M94 135 L128 116 L128 146 L94 165 Z" fill="url(#lowerRight)"/>
+  </g>
+</g>
+<text x="410" y="165" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="112" font-weight="800" letter-spacing="1" fill="#111827">COBUG</text>
+<text x="415" y="235" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="35" font-weight="500" fill="#94A3B8">Collab, Build and Grow</text>
+</svg>
