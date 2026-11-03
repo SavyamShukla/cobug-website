@@ -3,7 +3,13 @@
   "cleanUrls": true,
   "rewrites": [
     { "source": "/pricing", "destination": "/pricing.html" },
-    { "source": "/plans", "destination": "/pricing.html" }
+    { "source": "/plans", "destination": "/pricing.html" },
+    { "source": "/about", "destination": "/about.html" },
+    { "source": "/contact", "destination": "/contact.html" },
+    { "source": "/terms", "destination": "/terms.html" },
+    { "source": "/privacy", "destination": "/privacy.html" },
+    { "source": "/refund-policy", "destination": "/refund-policy.html" },
+    { "source": "/cancellation-refund", "destination": "/refund-policy.html" }
   ],
   "headers": [
     {

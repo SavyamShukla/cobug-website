@@ -775,34 +775,61 @@
       FOOTER
   ===================================================== -->
   <footer id="docs" class="border-t border-[#b8bfc8] bg-[#cbd1d8]/60">
-    <div class="mx-auto flex max-w-none flex-col gap-5 px-5 py-8 sm:flex-row sm:items-center sm:justify-between lg:px-8">
-      
-      <!-- Brand with official Platinum Silver icon -->
-      <div class="flex items-center gap-3">
-        <img
-          src="assets/COBUG_Platinum_Silver_Icon.svg"
-          alt="COBUG Logo"
-          class="h-8 w-8 shrink-0 rounded-xl object-contain shadow-xs"
-        />
+    <div class="mx-auto max-w-7xl px-5 py-12 lg:px-8">
+      <div class="grid gap-8 sm:grid-cols-2 md:grid-cols-4">
+        
+        <!-- Brand Info -->
+        <div class="space-y-3">
+          <div class="flex items-center gap-3">
+            <img src="assets/COBUG_Platinum_Silver_Icon.svg" alt="COBUG Logo" class="h-8 w-8 shrink-0 rounded-xl object-contain shadow-xs" />
+            <span class="display font-bold text-[#111419] text-lg">COBUG</span>
+          </div>
+          <p class="text-xs text-[#4e5561] leading-relaxed">
+            Collaborative developer workspace uniting tasks, code changes, reviews, and autonomous AI.
+          </p>
+          <p class="text-xs text-[#666e7b]">Developed by Savyam Shukla</p>
+          <p class="text-xs text-[#666e7b] flex items-center gap-1.5 pt-1">
+            <span>✉️</span>
+            <a href="mailto:cobugapp@gmail.com" class="font-medium text-[#111419] hover:underline">cobugapp@gmail.com</a>
+          </p>
+        </div>
 
-        <span class="display font-bold text-[#111419]">
-          COBUG
-        </span>
+        <!-- Product Links -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-[#111419]">Product</h4>
+          <ul class="mt-3 space-y-2 text-xs text-[#4e5561]">
+            <li><a href="/" class="hover:text-[#111419] transition">Home</a></li>
+            <li><a href="/pricing" class="hover:text-[#111419] transition">Plans &amp; Pricing</a></li>
+            <li><a href="https://github.com/SavyamShukla/cobug-app/releases/download/v1.0.0/COBUG-Setup-0.1.0-x64.exe" class="hover:text-[#111419] transition">Download App</a></li>
+          </ul>
+        </div>
 
-        <span class="text-sm text-[#4e5561] font-medium">
-          Collaborate. Build. Grow.
-        </span>
+        <!-- Company Links -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-[#111419]">Company</h4>
+          <ul class="mt-3 space-y-2 text-xs text-[#4e5561]">
+            <li><a href="/about" class="hover:text-[#111419] transition">About Us</a></li>
+            <li><a href="/contact" class="hover:text-[#111419] transition">Contact Us</a></li>
+            <li><a href="https://www.instagram.com/cobug_app" target="_blank" rel="noopener noreferrer" class="hover:text-[#111419] transition">Instagram (@cobug_app)</a></li>
+          </ul>
+        </div>
+
+        <!-- Legal Links -->
+        <div>
+          <h4 class="text-xs font-bold uppercase tracking-wider text-[#111419]">Legal &amp; Policies</h4>
+          <ul class="mt-3 space-y-2 text-xs text-[#4e5561]">
+            <li><a href="/terms" class="hover:text-[#111419] transition">Terms &amp; Conditions</a></li>
+            <li><a href="/privacy" class="hover:text-[#111419] transition">Privacy Policy</a></li>
+            <li><a href="/refund-policy" class="hover:text-[#111419] transition">Cancellation &amp; Refund Policy</a></li>
+          </ul>
+        </div>
+
       </div>
 
-      <div class="flex items-center gap-6">
-        <a href="/pricing" class="text-sm text-[#4e5561] hover:text-[#111419] font-medium transition">
-          Plans &amp; Pricing
-        </a>
-        <p class="text-sm text-[#4e5561] font-medium">
-          © 2026 COBUG. All rights reserved.
-        </p>
+      <div class="mt-8 border-t border-[#b8bfc8] pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-[#666e7b] gap-3">
+        <p>© 2026 COBUG. All rights reserved.</p>
+        <p>Payments securely powered by Razorpay</p>
       </div>
-
     </div>
   </footer>
 
