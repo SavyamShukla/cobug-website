@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>COBUG — Plans &amp; Pricing</title>
+  
+  <meta name="description" content="Upgrade your COBUG experience. Unlocks AI on Editor, multi-model intelligence, and autonomous code refactoring.">
+  <meta name="author" content="Savyam Shukla">
+
+  <!-- Favicon with official COBUG Platinum Silver Icon -->
+  <link rel="icon" type="image/svg+xml" href="assets/COBUG_Platinum_Silver_Icon.svg">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Razorpay Checkout SDK -->
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="cobug relative min-h-screen overflow-x-hidden bg-[#d5d9df] text-[#111419] selection:bg-[#a4adb8] selection:text-black">
+
+  <!-- =====================================================
+      BACKGROUND PLATINUM AURORA & METALLIC GRAIN
+  ===================================================== -->
+  <div class="pointer-events-none absolute inset-x-0 top-0 -z-10 h-[950px] overflow-hidden">
+    <div class="aurora absolute left-[-10%] top-[-200px] h-[650px] w-[750px] rounded-full bg-cyan-600/[0.08] blur-[150px]"></div>
+    <div class="aurora absolute right-[-10%] top-[-100px] h-[600px] w-[650px] rounded-full bg-violet-600/[0.09] blur-[150px]" style="animation-delay:-8s"></div>
+    <div class="grain absolute inset-0 [mask-image:linear-gradient(to_bottom,black,transparent)] opacity-75"></div>
+  </div>
+
+  <!-- =====================================================
+      NAVBAR
+  ===================================================== -->
+  <header class="relative z-10 border-b border-[#b8bfc8] bg-[#d5d9df]/90 backdrop-blur-xl shadow-xs">
+    <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 lg:px-8">
+
+      <!-- Logo with official Platinum Silver Icon -->
+      <a href="/" class="flex items-center gap-3 group">
+        <img
+          src="assets/COBUG_Platinum_Silver_Icon.svg"
+          alt="COBUG"
+          class="h-9 w-9 shrink-0 rounded-xl object-contain shadow-xs transition-transform group-hover:scale-105"
+        />
+        <span class="display text-lg font-bold text-[#111419] tracking-tight">
+          COBUG
+        </span>
+      </a>
+
+      <!-- Navigation & User Info -->
+      <div class="flex items-center gap-4">
+        <a
+          href="/"
+          class="hidden sm:inline-flex items-center gap-1.5 text-sm font-semibold text-[#3b424e] hover:text-[#111419] transition"
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 12H5M12 19l-7-7 7-7"/>
+          </svg>
+          Back to Home
+        </a>
+
+        <!-- Account Badge Container -->
+        <div id="user-badge" class="hidden items-center gap-2 rounded-xl border border-[#b8bfc8] bg-[#e4e7eb] px-3.5 py-1.5 text-xs text-[#2e3540] shadow-xs">
+          <span class="h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
+          <span id="user-badge-email" class="font-medium max-w-[180px] truncate">Connected</span>
+          <button id="btn-signout" class="ml-1 text-[11px] text-[#666e7b] hover:text-red-600 underline font-medium">Switch</button>
+        </div>
+
+        <button
+          id="btn-nav-signin"
+          type="button"
+          class="hidden rounded-xl border border-[#b8bfc8] bg-[#e4e7eb] px-4 py-2 text-xs font-semibold text-[#171a1f] hover:bg-[#d5d9df] transition"
+        >
+          Sign In
+        </button>
+
+        <a
+          href="https://github.com/SavyamShukla/cobug-app/releases/download/v1.0.0/COBUG-Setup-0.1.0-x64.exe"
+          class="hidden md:inline-flex items-center gap-2 rounded-xl bg-[#171a1f] px-4 py-2 text-xs font-semibold text-white shadow-md transition hover:bg-[#2b3038] hover:shadow-lg active:scale-95"
+        >
+          Download App
+        </a>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- =====================================================
+      HERO HEADER
+  ===================================================== -->
+  <main class="mx-auto max-w-7xl px-5 pt-14 pb-24 lg:px-8">
+    <div class="text-center max-w-3xl mx-auto">
+      <div class="inline-flex items-center gap-2 rounded-full border border-[#b8bfc8] bg-[#e4e7eb]/90 px-4 py-1.5 text-xs font-semibold text-[#343b45] shadow-xs">
+        <span class="h-2 w-2 rounded-full bg-cyan-600 animate-pulse"></span>
+        COBUG INTELLIGENCE PLANS
+      </div>
+
+      <h1 class="display mt-6 text-4xl font-extrabold leading-tight text-[#111419] sm:text-6xl">
+        Unlock your AI potential.
+        <span class="block bg-gradient-to-r from-[#20252e] via-[#454c57] to-[#717a86] bg-clip-text text-transparent">
+          Code at the speed of thought.
+        </span>
+      </h1>
+
+      <p class="mt-4 text-base sm:text-lg text-[#3b424e] leading-relaxed">
+        Choose the plan that suits your development workflow. Pay securely with Razorpay (UPI, Cards, NetBanking).
+        Instant activation on your COBUG Desktop account.
+      </p>
+
+      <!-- Context Notification Banner if redirected from app -->
+      <div id="app-redirect-banner" class="hidden mt-6 mx-auto max-w-xl rounded-2xl border border-cyan-500/30 bg-cyan-500/10 p-4 text-sm text-[#1b3d54] text-left flex items-start gap-3 shadow-xs">
+        <span class="text-xl">✨</span>
+        <div class="flex-1">
+          <p class="font-bold text-[#111419]" id="redirect-banner-title">Connected to your COBUG App</p>
+          <p class="text-xs text-[#2e3540] mt-0.5" id="redirect-banner-desc">Ready to upgrade your subscription. Once completed, your COBUG Desktop app will unlock immediately.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Alert / Status Toast -->
+    <div id="status-toast" class="hidden fixed bottom-6 right-6 z-50 max-w-md rounded-2xl border p-4 shadow-2xl backdrop-blur-md transition-all duration-300">
+      <div class="flex items-center gap-3">
+        <span id="toast-icon" class="text-xl">ℹ️</span>
+        <div class="flex-1 text-xs">
+          <p id="toast-title" class="font-bold text-[#111419]"></p>
+          <p id="toast-message" class="text-[#3b424e] mt-0.5"></p>
+        </div>
+        <button id="toast-close" class="text-slate-400 hover:text-slate-600 text-sm font-bold">✕</button>
+      </div>
+    </div>
+
+    <!-- =====================================================
+        PLAN CARDS GRID
+    ===================================================== -->
+    <div class="mt-14 grid gap-8 md:grid-cols-3 max-w-6xl mx-auto items-stretch">
+
+      <!-- ===============================================
+          PLAN 1: COBUG GO (FREE FOREVER)
+      =============================================== -->
+      <div id="card-go" class="platinum-card flex flex-col justify-between rounded-3xl p-7 transition-all duration-300 hover:translate-y-[-2px]">
+        <div>
+          <div class="flex items-center justify-between">
+            <span class="rounded-full border border-[#b8bfc8] bg-[#cbd2db] px-3 py-1 text-[11px] font-bold text-[#343b45] uppercase tracking-wider">
+              Free Forever
+            </span>
+          </div>
+
+          <h3 class="display mt-5 text-2xl font-bold text-[#111419]">COBUG Go</h3>
+          <p class="mt-2 text-xs text-[#4e5561] leading-relaxed">
+            Essential task breakdown and built-in offline intelligence for every developer.
+          </p>
+
+          <div class="mt-6 flex items-baseline gap-1">
+            <span class="display text-4xl font-extrabold text-[#111419]">₹0</span>
+            <span class="text-xs font-medium text-[#666e7b]">/ forever</span>
+          </div>
+
+          <hr class="my-6 border-[#c2c8d1]">
+
+          <ul class="space-y-3 text-xs text-[#2e3540]">
+            <li class="flex items-start gap-2.5">
+              <span class="text-emerald-600 font-bold shrink-0">✓</span>
+              <span><strong>Built-in Local Intent Engine:</strong> 100% offline, zero latency, no API keys needed.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="text-emerald-600 font-bold shrink-0">✓</span>
+              <span><strong>Intelligent Planning:</strong> Automated task breakdown and commit message generator.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="text-emerald-600 font-bold shrink-0">✓</span>
+              <span><strong>Chat AI (BYO Keys):</strong> Connect Gemini, OpenAI, Groq, or Ollama for chat discussions.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="text-emerald-600 font-bold shrink-0">✓</span>
+              <span><strong>Visual Git Sync:</strong> Workspace staging, diff tracking, and branch isolation.</span>
+            </li>
+            <li class="flex items-start gap-2.5 opacity-60">
+              <span class="text-slate-400 font-bold shrink-0">✕</span>
+              <span><strong>AI on Code Editor:</strong> Locked (Exclusive to Pro plan).</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="mt-8 pt-4 border-t border-[#c2c8d1]/50">
+          <button
+            type="button"
+            disabled
+            class="w-full rounded-xl border border-[#b8bfc8] bg-[#cbd1d8] py-3 text-xs font-bold text-[#4e5561] cursor-default text-center"
+          >
+            Included Free Forever
+          </button>
+        </div>
+      </div>
+
+      <!-- ===============================================
+          PLAN 2: COBUG PLUS (₹1 / MONTH)
+      =============================================== -->
+      <div id="card-plus" class="platinum-card relative flex flex-col justify-between rounded-3xl p-7 transition-all duration-300 hover:translate-y-[-2px] border-[#9ba5b2]">
+        <div>
+          <div class="flex items-center justify-between">
+            <span class="rounded-full border border-cyan-600/30 bg-cyan-500/10 px-3 py-1 text-[11px] font-bold text-cyan-800 uppercase tracking-wider">
+              Power Chat
+            </span>
+          </div>
+
+          <h3 class="display mt-5 text-2xl font-bold text-[#111419]">COBUG Plus</h3>
+          <p class="mt-2 text-xs text-[#4e5561] leading-relaxed">
+            Deep contextual reasoning and multi-file code context inspection in AI Chat.
+          </p>
+
+          <div class="mt-6 flex items-baseline gap-1">
+            <span class="display text-4xl font-extrabold text-[#111419]">₹1</span>
+            <span class="text-xs font-medium text-[#666e7b]">/ month</span>
+          </div>
+
+          <hr class="my-6 border-[#c2c8d1]">
+
+          <ul class="space-y-3 text-xs text-[#2e3540]">
+            <li class="flex items-start gap-2.5">
+              <span class="text-emerald-600 font-bold shrink-0">✓</span>
+              <span><strong>Everything in COBUG Go:</strong> Full collaboration, Local Intent Engine &amp; tasks.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="text-emerald-600 font-bold shrink-0">✓</span>
+              <span><strong>Deep Code Context Inspection:</strong> Let Chat AI inspect your repository files for accurate answers.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="text-emerald-600 font-bold shrink-0">✓</span>
+              <span><strong>Multi-Model Intelligence:</strong> Gemini 2.5 Flash, GPT-4o, Groq Llama 3.3, and local Ollama.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="text-emerald-600 font-bold shrink-0">✓</span>
+              <span><strong>Priority Response Pipelines:</strong> Higher throughput and unlimited saved chat sessions.</span>
+            </li>
+            <li class="flex items-start gap-2.5 opacity-60">
+              <span class="text-slate-400 font-bold shrink-0">✕</span>
+              <span><strong>AI on Code Editor:</strong> Locked (Exclusive to Pro plan).</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="mt-8 pt-4 border-t border-[#c2c8d1]/50">
+          <button
+            id="btn-pay-plus"
+            type="button"
+            onclick="initiateCheckout('plus')"
+            class="group w-full inline-flex items-center justify-center gap-2 rounded-xl bg-[#171a1f] py-3 text-xs font-bold text-white shadow-md transition hover:bg-[#2b3038] hover:shadow-lg active:scale-[0.98]"
+          >
+            <span>Switch to Plus (₹1/mo)</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform group-hover:translate-x-0.5">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- ===============================================
+          PLAN 3: COBUG PRO (₹2 / MONTH) — FEATURED
+      =============================================== -->
+      <div id="card-pro" class="relative flex flex-col justify-between rounded-3xl p-7 bg-gradient-to-b from-[#1c2027] to-[#12151a] text-white shadow-2xl ring-2 ring-purple-500/50 transition-all duration-300 hover:translate-y-[-4px] hover:shadow-purple-500/10">
+        <!-- Floating popular badge -->
+        <div class="absolute -top-3.5 left-1/2 -translate-x-1/2">
+          <span class="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-purple-600 to-indigo-600 px-4 py-1 text-[11px] font-extrabold uppercase tracking-wider text-white shadow-lg ring-2 ring-white/20">
+            <span>🔥</span>
+            MOST POPULAR — UNLOCKS EDITOR AI
+          </span>
+        </div>
+
+        <div>
+          <div class="flex items-center justify-between pt-2">
+            <span class="rounded-full border border-purple-400/30 bg-purple-500/20 px-3 py-1 text-[11px] font-bold text-purple-300 uppercase tracking-wider">
+              Antigravity AI
+            </span>
+          </div>
+
+          <h3 class="display mt-5 text-2xl font-bold text-white flex items-center gap-2">
+            COBUG Pro
+            <span class="text-xs px-2 py-0.5 rounded-full bg-purple-500/30 text-purple-200 border border-purple-400/40">Autonomous</span>
+          </h3>
+          <p class="mt-2 text-xs text-slate-300 leading-relaxed">
+            Direct AI in your Code Editor. Inspects, refactors, generates, and edits code live in your project.
+          </p>
+
+          <div class="mt-6 flex items-baseline gap-1">
+            <span class="display text-4xl font-extrabold text-white">₹2</span>
+            <span class="text-xs font-medium text-slate-400">/ month</span>
+          </div>
+
+          <hr class="my-6 border-white/10">
+
+          <ul class="space-y-3 text-xs text-slate-200">
+            <li class="flex items-start gap-2.5">
+              <span class="text-purple-400 font-bold shrink-0">✓</span>
+              <span><strong class="text-white">AI on Editor (Antigravity Mode):</strong> Direct inline code generation, bug fixing, and refactoring inside the editor.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="text-purple-400 font-bold shrink-0">✓</span>
+              <span><strong class="text-white">Autonomous Multi-File Diffing:</strong> Stages and visualizes changes before applying them to your workspace.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="text-purple-400 font-bold shrink-0">✓</span>
+              <span><strong class="text-white">All BYO AI Providers in Editor:</strong> Gemini, OpenAI, Groq, and Ollama unlocked directly inside your editing workflow.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="text-purple-400 font-bold shrink-0">✓</span>
+              <span><strong class="text-white">Everything in COBUG Plus:</strong> Deep multi-file code context inspection in Chat AI.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="text-purple-400 font-bold shrink-0">✓</span>
+              <span><strong class="text-white">Zero Context Switching:</strong> Talk to AI and write production code simultaneously.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="mt-8 pt-4 border-t border-white/10">
+          <button
+            id="btn-pay-pro"
+            type="button"
+            onclick="initiateCheckout('pro')"
+            class="group w-full inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-purple-600 via-indigo-600 to-purple-600 bg-size-200 py-3.5 text-xs font-extrabold text-white shadow-xl transition-all duration-300 hover:brightness-110 active:scale-[0.98] ring-2 ring-purple-400/40"
+          >
+            <span>Upgrade to Pro (₹2/mo)</span>
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="transition-transform group-hover:translate-x-1">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Trust & Security Badges -->
+    <div class="mt-16 mx-auto max-w-4xl text-center">
+      <div class="flex flex-wrap items-center justify-center gap-8 text-xs text-[#4e5561]">
+        <div class="flex items-center gap-2">
+          <span>🔒</span>
+          <span>Secured with Razorpay 256-Bit SSL</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span>⚡</span>
+          <span>Instant App Activation via Webhooks</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span>💳</span>
+          <span>Supports UPI, Cards, NetBanking, Wallets</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span>🔄</span>
+          <span>Cancel or switch anytime</span>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- =====================================================
+      MODAL: PROCESSING / VERIFYING OVERLAY
+  ===================================================== -->
+  <div id="processing-modal" class="hidden fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/75 backdrop-blur-md select-none">
+    <div class="relative w-full max-w-sm rounded-[28px] border border-white/10 bg-[#0e121b] p-6 text-white text-center shadow-2xl">
+      <div class="relative flex h-16 w-16 mx-auto items-center justify-center">
+        <span class="absolute inset-0 rounded-2xl animate-ping bg-purple-500 opacity-25"></span>
+        <div class="relative flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-tr from-purple-600 to-indigo-600 shadow-lg text-white">
+          <svg class="h-7 w-7 animate-spin" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+            <path class="opacity-90" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
+          </svg>
+        </div>
+      </div>
+      <h3 id="proc-title" class="mt-4 text-lg font-bold text-white">Initializing Razorpay Checkout...</h3>
+      <p id="proc-desc" class="mt-1 text-xs text-slate-300">Connecting securely to Razorpay gateway. Please do not refresh.</p>
+    </div>
+  </div>
+
+  <!-- =====================================================
+      MODAL: SUCCESS CELEBRATION
+  ===================================================== -->
+  <div id="success-modal" class="hidden fixed inset-0 z-[110] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md select-none">
+    <div class="relative w-full max-w-md overflow-hidden rounded-[28px] border border-emerald-500/30 bg-[#0c1410] p-7 text-white text-center shadow-2xl">
+      <div class="absolute -top-16 -left-16 h-36 w-36 rounded-full bg-emerald-500/20 blur-3xl"></div>
+      <div class="absolute -bottom-16 -right-16 h-36 w-36 rounded-full bg-cyan-500/20 blur-3xl"></div>
+
+      <div class="relative flex h-16 w-16 mx-auto items-center justify-center rounded-2xl bg-gradient-to-tr from-emerald-500 to-teal-500 text-white text-3xl shadow-lg ring-4 ring-emerald-500/20">
+        ✓
+      </div>
+
+      <span class="mt-4 inline-block rounded-full bg-emerald-500/20 px-3 py-1 text-[11px] font-bold text-emerald-300 uppercase tracking-wider border border-emerald-500/30">
+        Payment Verified &amp; Activated
+      </span>
+
+      <h3 class="mt-3 text-2xl font-bold text-white tracking-tight">
+        You're on <span id="success-plan-name" class="text-emerald-400">COBUG Pro</span>!
+      </h3>
+
+      <p class="mt-2 text-xs text-slate-300 leading-relaxed max-w-sm mx-auto">
+        Your subscription has been verified and applied to your account (<strong id="success-user-email" class="text-white"></strong>).
+        All features and AI on Editor are now fully unlocked.
+      </p>
+
+      <div class="mt-6 rounded-2xl border border-white/10 bg-white/[0.04] p-4 text-xs text-left space-y-2 text-slate-300">
+        <div class="flex items-center gap-2 text-white font-semibold">
+          <span>🚀</span>
+          <span>Next Steps:</span>
+        </div>
+        <p>1. Open your <strong>COBUG Desktop App</strong>.</p>
+        <p>2. Your app detects your new plan automatically.</p>
+        <p>3. In Code Editor, click <strong>COBUG AI</strong> to enjoy autonomous coding!</p>
+      </div>
+
+      <div class="mt-6 flex flex-col sm:flex-row gap-3">
+        <a
+          id="btn-open-app"
+          href="cobug://payment-success"
+          class="flex-1 inline-flex items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 py-3 text-xs font-bold text-white shadow-lg transition hover:brightness-110 active:scale-[0.98]"
+        >
+          Open COBUG App
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/>
+          </svg>
+        </a>
+        <button
+          type="button"
+          onclick="window.close()"
+          class="sm:w-32 rounded-xl border border-white/20 bg-white/10 py-3 text-xs font-semibold text-slate-300 hover:bg-white/20 transition"
+        >
+          Close Tab
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =====================================================
+      MODAL: SIGN IN / LINK ACCOUNT MODAL
+  ===================================================== -->
+  <div id="signin-modal" class="hidden fixed inset-0 z-[120] flex items-center justify-center p-4 bg-black/75 backdrop-blur-md select-none">
+    <div class="relative w-full max-w-sm rounded-[28px] border border-white/10 bg-[#0e121b] p-6 text-white shadow-2xl">
+      <div class="flex items-center justify-between pb-3 border-b border-white/10">
+        <div class="flex items-center gap-2">
+          <img src="assets/COBUG_Platinum_Silver_Icon.svg" class="h-6 w-6 rounded-lg" alt="COBUG">
+          <h3 class="text-sm font-bold text-white">Sign In to COBUG</h3>
+        </div>
+        <button id="btn-close-signin" class="text-slate-400 hover:text-white text-base">✕</button>
+      </div>
+
+      <p class="mt-3 text-xs text-slate-300">
+        Sign in to link this subscription to your COBUG desktop account.
+      </p>
+
+      <form id="signin-form" class="mt-4 space-y-3" onsubmit="handleSignIn(event)">
+        <div id="signin-error" class="hidden rounded-xl border border-rose-500/30 bg-rose-500/10 p-2.5 text-xs text-rose-300"></div>
+
+        <div>
+          <label class="block text-[11px] font-semibold text-slate-400 mb-1">Email or Username</label>
+          <input
+            id="signin-email"
+            type="text"
+            required
+            placeholder="you@example.com"
+            class="w-full rounded-xl border border-white/15 bg-white/5 px-3 py-2 text-xs text-white placeholder-slate-500 focus:border-cyan-400 focus:outline-none focus:ring-1 focus:ring-cyan-400"
+          />
+        </div>
+
+        <div>
+          <label class="block text-[11px] font-semibold text-slate-400 mb-1">Password</label>
+          <input
+            id="signin-password"
+            type="password"
+            required
+            placeholder="••••••••"
+            class="w-full rounded-xl border border-white/15 bg-white/5 px-3 py-2 text-xs text-white placeholder-slate-500 focus:border-cyan-400 focus:outline-none focus:ring-1 focus:ring-cyan-400"
+          />
+        </div>
+
+        <button
+          id="btn-submit-signin"
+          type="submit"
+          class="w-full mt-2 rounded-xl bg-gradient-to-r from-cyan-600 to-blue-600 py-2.5 text-xs font-bold text-white shadow-md hover:brightness-110 transition active:scale-[0.98]"
+        >
+          Sign In &amp; Continue
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- =====================================================
+      PRICING & CHECKOUT SCRIPT
+  ===================================================== -->
+  <script>
+    const API_BASE = "https://cobug-app.onrender.com/api";
+
+    // Application State
+    let authToken = "";
+    let userEmail = "";
+    let targetPlanFromUrl = "";
+    let pendingPlan = "";
+
+    // DOM Elements
+    const userBadge = document.getElementById("user-badge");
+    const userBadgeEmail = document.getElementById("user-badge-email");
+    const btnSignOut = document.getElementById("btn-signout");
+    const btnNavSignIn = document.getElementById("btn-nav-signin");
+    const redirectBanner = document.getElementById("app-redirect-banner");
+    const redirectBannerTitle = document.getElementById("redirect-banner-title");
+    const redirectBannerDesc = document.getElementById("redirect-banner-desc");
+    const processingModal = document.getElementById("processing-modal");
+    const procTitle = document.getElementById("proc-title");
+    const procDesc = document.getElementById("proc-desc");
+    const successModal = document.getElementById("success-modal");
+    const successPlanName = document.getElementById("success-plan-name");
+    const successUserEmail = document.getElementById("success-user-email");
+    const signinModal = document.getElementById("signin-modal");
+    const signinError = document.getElementById("signin-error");
+    const btnCloseSignin = document.getElementById("btn-close-signin");
+    const statusToast = document.getElementById("status-toast");
+    const toastTitle = document.getElementById("toast-title");
+    const toastMessage = document.getElementById("toast-message");
+    const toastIcon = document.getElementById("toast-icon");
+    const toastClose = document.getElementById("toast-close");
+
+    // Initialize from URL parameters or localStorage
+    window.addEventListener("DOMContentLoaded", () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const urlToken = urlParams.get("token");
+      const urlEmail = urlParams.get("email");
+      const urlPlan = urlParams.get("plan");
+
+      if (urlToken) {
+        authToken = urlToken;
+        localStorage.setItem("cobug_website_token", authToken);
+      } else {
+        authToken = localStorage.getItem("cobug_website_token") || "";
+      }
+
+      if (urlEmail) {
+        userEmail = decodeURIComponent(urlEmail);
+        localStorage.setItem("cobug_website_email", userEmail);
+      } else {
+        userEmail = localStorage.getItem("cobug_website_email") || "";
+      }
+
+      if (urlPlan) {
+        targetPlanFromUrl = urlPlan.toLowerCase().trim();
+      }
+
+      updateUserUI();
+
+      if (targetPlanFromUrl === "pro") {
+        highlightCard("card-pro");
+        if (authToken) {
+          showRedirectBanner("pro");
+        }
+      } else if (targetPlanFromUrl === "plus") {
+        highlightCard("card-plus");
+        if (authToken) {
+          showRedirectBanner("plus");
+        }
+      }
+
+      // If user came directly with token and plan, prompt or trigger
+      if (targetPlanFromUrl && authToken) {
+        // Show status toast prompt
+        showToast("Ready for Checkout", `Upgrading to COBUG ${targetPlanFromUrl.toUpperCase()}. Click proceed or choose your plan.`, "⚡", "cyan");
+      }
+    });
+
+    function updateUserUI() {
+      if (authToken) {
+        userBadge.classList.remove("hidden");
+        userBadge.classList.add("flex");
+        userBadgeEmail.textContent = userEmail || "Account Active";
+        btnNavSignIn.classList.add("hidden");
+      } else {
+        userBadge.classList.add("hidden");
+        userBadge.classList.remove("flex");
+        btnNavSignIn.classList.remove("hidden");
+      }
+    }
+
+    function showRedirectBanner(plan) {
+      redirectBanner.classList.remove("hidden");
+      const isPro = plan === "pro";
+      redirectBannerTitle.textContent = `Upgrading to COBUG ${isPro ? "Pro (₹2/mo)" : "Plus (₹1/mo)"}`;
+      redirectBannerDesc.textContent = `Connected for ${userEmail || "your account"}. Click "${isPro ? "Upgrade to Pro" : "Switch to Plus"}" below to initiate Razorpay checkout.`;
+    }
+
+    function highlightCard(cardId) {
+      const card = document.getElementById(cardId);
+      if (card) {
+        card.classList.add("ring-4", "ring-cyan-400/80");
+        card.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    }
+
+    // Sign out handler
+    btnSignOut.addEventListener("click", () => {
+      authToken = "";
+      userEmail = "";
+      localStorage.removeItem("cobug_website_token");
+      localStorage.removeItem("cobug_website_email");
+      updateUserUI();
+      redirectBanner.classList.add("hidden");
+      showToast("Signed Out", "Account disconnected. Sign in to link subscriptions.", "ℹ️", "slate");
+    });
+
+    btnNavSignIn.addEventListener("click", () => {
+      signinModal.classList.remove("hidden");
+      signinError.classList.add("hidden");
+    });
+
+    btnCloseSignin.addEventListener("click", () => {
+      signinModal.classList.add("hidden");
+    });
+
+    toastClose.addEventListener("click", () => {
+      statusToast.classList.add("hidden");
+    });
+
+    function showToast(title, message, icon = "ℹ️", color = "cyan") {
+      toastTitle.textContent = title;
+      toastMessage.textContent = message;
+      toastIcon.textContent = icon;
+      statusToast.className = `fixed bottom-6 right-6 z-50 max-w-md rounded-2xl border p-4 shadow-2xl backdrop-blur-md transition-all duration-300 ${
+        color === "rose" ? "border-rose-500/40 bg-[#160c0f]/90 text-rose-200" :
+        color === "emerald" ? "border-emerald-500/40 bg-[#0c1611]/90 text-emerald-200" :
+        "border-[#b8bfc8] bg-[#eaedf2]/95 text-[#111419]"
+      }`;
+      statusToast.classList.remove("hidden");
+      setTimeout(() => {
+        statusToast.classList.add("hidden");
+      }, 7000);
+    }
+
+    // Sign In handler
+    async function handleSignIn(e) {
+      e.preventDefault();
+      const email = document.getElementById("signin-email").value.trim();
+      const password = document.getElementById("signin-password").value;
+      const submitBtn = document.getElementById("btn-submit-signin");
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Signing In...";
+      signinError.classList.add("hidden");
+
+      try {
+        const resp = await fetch(`${API_BASE}/auth/login`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ emailOrUsername: email, password }),
+        });
+
+        const data = await resp.json();
+        if (!resp.ok) {
+          throw new Error(data.message || "Invalid email or password.");
+        }
+
+        authToken = data.token;
+        userEmail = data.email || email;
+        localStorage.setItem("cobug_website_token", authToken);
+        localStorage.setItem("cobug_website_email", userEmail);
+
+        signinModal.classList.add("hidden");
+        updateUserUI();
+        showToast("Signed In", `Welcome back, ${userEmail}`, "✓", "emerald");
+
+        if (pendingPlan) {
+          const planToCheckout = pendingPlan;
+          pendingPlan = "";
+          initiateCheckout(planToCheckout);
+        }
+      } catch (err) {
+        signinError.textContent = err.message || "Sign in failed.";
+        signinError.classList.remove("hidden");
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.textContent = "Sign In & Continue";
+      }
+    }
+
+    // Initiate Razorpay Checkout
+    async function initiateCheckout(plan) {
+      if (!authToken) {
+        pendingPlan = plan;
+        signinModal.classList.remove("hidden");
+        signinError.classList.add("hidden");
+        showToast("Account Required", "Please sign in to link this subscription to your COBUG account.", "🔒", "cyan");
+        return;
+      }
+
+      showProcessing("Preparing Razorpay Checkout...", `Creating secure order for COBUG ${plan.toUpperCase()}...`);
+
+      try {
+        // Step 1: Create Order on COBUG Backend
+        const orderResp = await fetch(`${API_BASE}/payments/razorpay/order`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${authToken}`,
+          },
+          body: JSON.stringify({ plan }),
+        });
+
+        if (orderResp.status === 401) {
+          hideProcessing();
+          authToken = "";
+          updateUserUI();
+          pendingPlan = plan;
+          signinModal.classList.remove("hidden");
+          throw new Error("Your login session expired. Please sign in again.");
+        }
+
+        const orderData = await orderResp.json();
+        if (!orderResp.ok) {
+          throw new Error(orderData.message || "Unable to create payment order.");
+        }
+
+        hideProcessing();
+
+        // Step 2: Open Razorpay Checkout Modal
+        const options = {
+          key: orderData.keyId,
+          amount: orderData.amount,
+          currency: orderData.currency || "INR",
+          name: "COBUG",
+          description: plan === "pro" ? "COBUG Pro (₹2/mo) - Unlocks Editor AI" : "COBUG Plus (₹1/mo)",
+          image: "assets/COBUG_Platinum_Silver_Icon.svg",
+          order_id: orderData.orderId,
+          prefill: {
+            email: userEmail,
+          },
+          theme: {
+            color: plan === "pro" ? "#7c3aed" : "#0891b2",
+          },
+          modal: {
+            ondismiss: function () {
+              showToast("Payment Cancelled", "The payment window was closed without completing.", "⚠️", "rose");
+            },
+          },
+          handler: async function (response) {
+            // Step 3: Verify Payment Signature on COBUG Backend
+            showProcessing("Verifying Payment...", "Confirming transaction with bank and activating your plan...");
+
+            try {
+              const verifyResp = await fetch(`${API_BASE}/payments/razorpay/verify`, {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                  "Authorization": `Bearer ${authToken}`,
+                },
+                body: JSON.stringify({
+                  orderId: response.razorpay_order_id,
+                  paymentId: response.razorpay_payment_id,
+                  signature: response.razorpay_signature,
+                }),
+              });
+
+              const verifyData = await verifyResp.json();
+              if (!verifyResp.ok || !verifyData.success) {
+                throw new Error(verifyData.message || "Payment signature verification failed.");
+              }
+
+              hideProcessing();
+              showSuccess(plan);
+            } catch (vErr) {
+              hideProcessing();
+              showToast("Verification Error", vErr.message || "Could not verify payment.", "❌", "rose");
+            }
+          },
+        };
+
+        const rzp = new window.Razorpay(options);
+        rzp.on("payment.failed", function (resp) {
+          hideProcessing();
+          const reason = resp?.error?.description || "Payment was declined by bank or card issuer.";
+          showToast("Payment Failed", reason, "❌", "rose");
+        });
+
+        rzp.open();
+      } catch (err) {
+        hideProcessing();
+        showToast("Checkout Error", err.message || "Unable to start checkout.", "⚠️", "rose");
+      }
+    }
+
+    function showProcessing(title, desc) {
+      procTitle.textContent = title;
+      procDesc.textContent = desc;
+      processingModal.classList.remove("hidden");
+    }
+
+    function hideProcessing() {
+      processingModal.classList.add("hidden");
+    }
+
+    function showSuccess(plan) {
+      const isPro = plan === "pro";
+      successPlanName.textContent = isPro ? "COBUG Pro" : "COBUG Plus";
+      successUserEmail.textContent = userEmail || "your account";
+      successModal.classList.remove("hidden");
+    }
+  </script>
+</body>
+</html>
