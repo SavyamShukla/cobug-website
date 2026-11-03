@@ -494,55 +494,202 @@
   </div>
 
   <!-- =====================================================
-      MODAL: SIGN IN / LINK ACCOUNT MODAL
+      MODAL: SIGN IN & REGISTRATION MODAL
   ===================================================== -->
-  <div id="signin-modal" class="hidden fixed inset-0 z-[120] flex items-center justify-center p-4 bg-black/75 backdrop-blur-md select-none">
+  <div id="signin-modal" class="hidden fixed inset-0 z-[120] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md select-none">
     <div class="relative w-full max-w-sm rounded-[28px] border border-white/10 bg-[#0e121b] p-6 text-white shadow-2xl">
       <div class="flex items-center justify-between pb-3 border-b border-white/10">
         <div class="flex items-center gap-2">
           <img src="assets/COBUG_Platinum_Silver_Icon.svg" class="h-6 w-6 rounded-lg" alt="COBUG">
-          <h3 class="text-sm font-bold text-white">Sign In to COBUG</h3>
+          <h3 class="text-sm font-bold text-white">COBUG Account</h3>
         </div>
         <button id="btn-close-signin" class="text-slate-400 hover:text-white text-base">✕</button>
       </div>
 
-      <p class="mt-3 text-xs text-slate-300">
-        Sign in to link this subscription to your COBUG desktop account.
-      </p>
-
-      <form id="signin-form" class="mt-4 space-y-3" onsubmit="handleSignIn(event)">
-        <div id="signin-error" class="hidden rounded-xl border border-rose-500/30 bg-rose-500/10 p-2.5 text-xs text-rose-300"></div>
-
-        <div>
-          <label class="block text-[11px] font-semibold text-slate-400 mb-1">Email or Username</label>
-          <input
-            id="signin-email"
-            type="text"
-            required
-            placeholder="you@example.com"
-            class="w-full rounded-xl border border-white/15 bg-white/5 px-3 py-2 text-xs text-white placeholder-slate-500 focus:border-cyan-400 focus:outline-none focus:ring-1 focus:ring-cyan-400"
-          />
-        </div>
-
-        <div>
-          <label class="block text-[11px] font-semibold text-slate-400 mb-1">Password</label>
-          <input
-            id="signin-password"
-            type="password"
-            required
-            placeholder="••••••••"
-            class="w-full rounded-xl border border-white/15 bg-white/5 px-3 py-2 text-xs text-white placeholder-slate-500 focus:border-cyan-400 focus:outline-none focus:ring-1 focus:ring-cyan-400"
-          />
-        </div>
-
+      <!-- Tab Switcher: Sign In vs Sign Up -->
+      <div class="mt-4 flex rounded-xl bg-white/5 p-1 border border-white/10 text-xs">
         <button
-          id="btn-submit-signin"
-          type="submit"
-          class="w-full mt-2 rounded-xl bg-gradient-to-r from-cyan-600 to-blue-600 py-2.5 text-xs font-bold text-white shadow-md hover:brightness-110 transition active:scale-[0.98]"
+          id="tab-btn-signin"
+          type="button"
+          onclick="switchAuthTab('signin')"
+          class="flex-1 rounded-lg py-1.5 font-bold transition bg-white/15 text-white"
         >
-          Sign In &amp; Continue
+          Sign In
         </button>
-      </form>
+        <button
+          id="tab-btn-signup"
+          type="button"
+          onclick="switchAuthTab('signup')"
+          class="flex-1 rounded-lg py-1.5 font-bold transition text-slate-400 hover:text-white"
+        >
+          Create Account
+        </button>
+      </div>
+
+      <!-- ================= SIGN IN TAB ================= -->
+      <div id="auth-panel-signin" class="mt-4 space-y-3">
+        <!-- Google OAuth Button -->
+        <button
+          type="button"
+          onclick="startGoogleAuth()"
+          class="w-full flex items-center justify-center gap-2.5 rounded-xl border border-white/15 bg-white/[0.06] hover:bg-white/[0.12] py-2.5 text-xs font-semibold text-white transition active:scale-[0.98]"
+        >
+          <svg class="h-4 w-4" viewBox="0 0 24 24">
+            <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+            <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+            <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+            <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+          </svg>
+          Continue with Google
+        </button>
+
+        <div class="relative flex items-center justify-center text-[10px] uppercase text-slate-500 my-2">
+          <span class="absolute inset-x-0 border-t border-white/10"></span>
+          <span class="relative bg-[#0e121b] px-2">or with email</span>
+        </div>
+
+        <form id="signin-form" class="space-y-3" onsubmit="handleSignIn(event)">
+          <div id="signin-error" class="hidden rounded-xl border border-rose-500/30 bg-rose-500/10 p-2.5 text-xs text-rose-300"></div>
+
+          <div>
+            <label class="block text-[11px] font-semibold text-slate-400 mb-1">Email Address</label>
+            <input
+              id="signin-email"
+              type="email"
+              required
+              placeholder="you@example.com"
+              class="w-full rounded-xl border border-white/15 bg-white/5 px-3 py-2 text-xs text-white placeholder-slate-500 focus:border-cyan-400 focus:outline-none focus:ring-1 focus:ring-cyan-400"
+            />
+          </div>
+
+          <div>
+            <label class="block text-[11px] font-semibold text-slate-400 mb-1">Password</label>
+            <input
+              id="signin-password"
+              type="password"
+              required
+              placeholder="••••••••"
+              class="w-full rounded-xl border border-white/15 bg-white/5 px-3 py-2 text-xs text-white placeholder-slate-500 focus:border-cyan-400 focus:outline-none focus:ring-1 focus:ring-cyan-400"
+            />
+          </div>
+
+          <button
+            id="btn-submit-signin"
+            type="submit"
+            class="w-full mt-2 rounded-xl bg-gradient-to-r from-cyan-600 to-blue-600 py-2.5 text-xs font-bold text-white shadow-md hover:brightness-110 transition active:scale-[0.98]"
+          >
+            Sign In &amp; Continue
+          </button>
+        </form>
+      </div>
+
+      <!-- ================= SIGN UP TAB ================= -->
+      <div id="auth-panel-signup" class="hidden mt-4 space-y-3">
+        <!-- Google OAuth Button -->
+        <button
+          type="button"
+          onclick="startGoogleAuth()"
+          class="w-full flex items-center justify-center gap-2.5 rounded-xl border border-white/15 bg-white/[0.06] hover:bg-white/[0.12] py-2.5 text-xs font-semibold text-white transition active:scale-[0.98]"
+        >
+          <svg class="h-4 w-4" viewBox="0 0 24 24">
+            <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+            <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+            <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+            <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+          </svg>
+          Sign Up with Google
+        </button>
+
+        <div class="relative flex items-center justify-center text-[10px] uppercase text-slate-500 my-2">
+          <span class="absolute inset-x-0 border-t border-white/10"></span>
+          <span class="relative bg-[#0e121b] px-2">or with email</span>
+        </div>
+
+        <!-- Step 1: Registration Form -->
+        <form id="reg-form-step-1" class="space-y-2.5" onsubmit="handleSendRegisterOtp(event)">
+          <div id="reg-error" class="hidden rounded-xl border border-rose-500/30 bg-rose-500/10 p-2 text-xs text-rose-300"></div>
+
+          <div>
+            <label class="block text-[11px] font-semibold text-slate-400 mb-1">Full Name</label>
+            <input
+              id="reg-name"
+              type="text"
+              required
+              placeholder="Your name"
+              class="w-full rounded-xl border border-white/15 bg-white/5 px-3 py-2 text-xs text-white placeholder-slate-500 focus:border-cyan-400 focus:outline-none"
+            />
+          </div>
+
+          <div>
+            <label class="block text-[11px] font-semibold text-slate-400 mb-1">Email</label>
+            <input
+              id="reg-email"
+              type="email"
+              required
+              placeholder="you@example.com"
+              class="w-full rounded-xl border border-white/15 bg-white/5 px-3 py-2 text-xs text-white placeholder-slate-500 focus:border-cyan-400 focus:outline-none"
+            />
+          </div>
+
+          <div>
+            <label class="block text-[11px] font-semibold text-slate-400 mb-1">Password (min 6 chars)</label>
+            <input
+              id="reg-password"
+              type="password"
+              required
+              minlength="6"
+              placeholder="••••••••"
+              class="w-full rounded-xl border border-white/15 bg-white/5 px-3 py-2 text-xs text-white placeholder-slate-500 focus:border-cyan-400 focus:outline-none"
+            />
+          </div>
+
+          <button
+            id="btn-send-reg-otp"
+            type="submit"
+            class="w-full mt-2 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 py-2.5 text-xs font-bold text-white shadow-md hover:brightness-110 transition active:scale-[0.98]"
+          >
+            Send Verification Code
+          </button>
+        </form>
+
+        <!-- Step 2: OTP Form -->
+        <form id="reg-form-step-2" class="hidden space-y-3" onsubmit="handleVerifyRegisterOtp(event)">
+          <div id="reg-error-2" class="hidden rounded-xl border border-rose-500/30 bg-rose-500/10 p-2 text-xs text-rose-300"></div>
+
+          <div class="rounded-xl border border-cyan-500/20 bg-cyan-500/10 p-2.5 text-[11px] text-cyan-200">
+            Enter the 6-digit code sent to <strong id="reg-otp-email-label">your email</strong>.
+          </div>
+
+          <div>
+            <label class="block text-[11px] font-semibold text-slate-400 mb-1">Verification Code (OTP)</label>
+            <input
+              id="reg-otp"
+              type="text"
+              required
+              maxlength="6"
+              placeholder="123456"
+              class="w-full text-center tracking-widest text-base font-mono rounded-xl border border-white/15 bg-white/5 px-3 py-2 text-white placeholder-slate-500 focus:border-cyan-400 focus:outline-none"
+            />
+          </div>
+
+          <button
+            id="btn-verify-reg-otp"
+            type="submit"
+            class="w-full rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 py-2.5 text-xs font-bold text-white shadow-md hover:brightness-110 transition active:scale-[0.98]"
+          >
+            Verify &amp; Create Account
+          </button>
+
+          <button
+            type="button"
+            onclick="resetRegStep()"
+            class="w-full text-[11px] text-slate-400 hover:text-white underline"
+          >
+            ← Back to details
+          </button>
+        </form>
+      </div>
+
     </div>
   </div>
 
@@ -557,6 +704,8 @@
     let userEmail = "";
     let targetPlanFromUrl = "";
     let pendingPlan = "";
+    let currentActivePlan = "go";
+    let registerChallengeId = "";
 
     // DOM Elements
     const userBadge = document.getElementById("user-badge");
@@ -587,6 +736,7 @@
       const urlToken = urlParams.get("token");
       const urlEmail = urlParams.get("email");
       const urlPlan = urlParams.get("plan");
+      const openSignIn = urlParams.get("signin") === "true";
 
       if (urlToken) {
         authToken = urlToken;
@@ -596,7 +746,7 @@
       }
 
       if (urlEmail) {
-        userEmail = decodeURIComponent(urlEmail);
+        userEmail = decodeURIComponent(urlEmail).trim().toLowerCase();
         localStorage.setItem("cobug_website_email", userEmail);
       } else {
         userEmail = localStorage.getItem("cobug_website_email") || "";
@@ -620,10 +770,45 @@
         }
       }
 
+      if (authToken) {
+        fetchUserPlan();
+      } else if (openSignIn) {
+        signinModal.classList.remove("hidden");
+      }
+
       // If user came directly with token and plan, prompt or trigger
       if (targetPlanFromUrl && authToken) {
-        // Show status toast prompt
-        showToast("Ready for Checkout", `Upgrading to COBUG ${targetPlanFromUrl.toUpperCase()}. Click proceed or choose your plan.`, "⚡", "cyan");
+        showToast("Ready for Checkout", `Upgrading to COBUG ${targetPlanFromUrl.toUpperCase()}. Click proceed to pay.`, "⚡", "cyan");
+      }
+    });
+
+    // Listen for Google OAuth callback from popup window
+    window.addEventListener("message", async (event) => {
+      if (event.data?.source === "cobug-google" && event.data?.token) {
+        authToken = event.data.token;
+        localStorage.setItem("cobug_website_token", authToken);
+
+        try {
+          const meResp = await fetch(`${API_BASE}/auth/me`, {
+            headers: { "Authorization": `Bearer ${authToken}` },
+          });
+          const meData = await meResp.json();
+          if (meData?.email) {
+            userEmail = meData.email;
+            localStorage.setItem("cobug_website_email", userEmail);
+          }
+        } catch {}
+
+        signinModal.classList.add("hidden");
+        updateUserUI();
+        showToast("Signed In", `Welcome back, ${userEmail || "Google User"}!`, "✓", "emerald");
+        fetchUserPlan();
+
+        if (pendingPlan) {
+          const planToCheckout = pendingPlan;
+          pendingPlan = "";
+          initiateCheckout(planToCheckout);
+        }
       }
     });
 
@@ -637,6 +822,35 @@
         userBadge.classList.add("hidden");
         userBadge.classList.remove("flex");
         btnNavSignIn.classList.remove("hidden");
+      }
+    }
+
+    async function fetchUserPlan() {
+      if (!authToken) return;
+      try {
+        const resp = await fetch(`${API_BASE}/ai/settings`, {
+          headers: { "Authorization": `Bearer ${authToken}` },
+        });
+        if (resp.ok) {
+          const data = await resp.json();
+          if (data?.plan) {
+            currentActivePlan = data.plan.toLowerCase();
+            updatePlanButtons(currentActivePlan);
+          }
+        }
+      } catch {}
+    }
+
+    function updatePlanButtons(activePlan) {
+      const btnPlus = document.getElementById("btn-pay-plus");
+      const btnPro = document.getElementById("btn-pay-pro");
+
+      if (activePlan === "pro" && btnPro) {
+        btnPro.innerHTML = `<span>✓ Currently on Pro</span>`;
+        btnPro.classList.add("opacity-80");
+      } else if (activePlan === "plus" && btnPlus) {
+        btnPlus.innerHTML = `<span>✓ Currently on Plus</span>`;
+        btnPlus.classList.add("opacity-80");
       }
     }
 
@@ -659,6 +873,7 @@
     btnSignOut.addEventListener("click", () => {
       authToken = "";
       userEmail = "";
+      currentActivePlan = "go";
       localStorage.removeItem("cobug_website_token");
       localStorage.removeItem("cobug_website_email");
       updateUserUI();
@@ -669,6 +884,7 @@
     btnNavSignIn.addEventListener("click", () => {
       signinModal.classList.remove("hidden");
       signinError.classList.add("hidden");
+      switchAuthTab("signin");
     });
 
     btnCloseSignin.addEventListener("click", () => {
@@ -694,12 +910,66 @@
       }, 7000);
     }
 
-    // Sign In handler
+    // Tab switcher between Sign In and Sign Up
+    function switchAuthTab(tab) {
+      const panelSignIn = document.getElementById("auth-panel-signin");
+      const panelSignUp = document.getElementById("auth-panel-signup");
+      const btnSignIn = document.getElementById("tab-btn-signin");
+      const btnSignUp = document.getElementById("tab-btn-signup");
+
+      if (tab === "signin") {
+        panelSignIn.classList.remove("hidden");
+        panelSignUp.classList.add("hidden");
+        btnSignIn.className = "flex-1 rounded-lg py-1.5 font-bold transition bg-white/15 text-white";
+        btnSignUp.className = "flex-1 rounded-lg py-1.5 font-bold transition text-slate-400 hover:text-white";
+      } else {
+        panelSignIn.classList.add("hidden");
+        panelSignUp.classList.remove("hidden");
+        btnSignUp.className = "flex-1 rounded-lg py-1.5 font-bold transition bg-white/15 text-white";
+        btnSignIn.className = "flex-1 rounded-lg py-1.5 font-bold transition text-slate-400 hover:text-white";
+      }
+    }
+
+    function resetRegStep() {
+      document.getElementById("reg-form-step-1").classList.remove("hidden");
+      document.getElementById("reg-form-step-2").classList.add("hidden");
+    }
+
+    // Google Sign-In Trigger
+    async function startGoogleAuth() {
+      try {
+        const origin = window.location.origin;
+        const resp = await fetch(`${API_BASE}/auth/google/start?returnOrigin=${encodeURIComponent(origin)}`);
+        const data = await resp.json();
+        if (data.authorizationUrl) {
+          const width = 500;
+          const height = 620;
+          const left = window.screenX + (window.outerWidth - width) / 2;
+          const top = window.screenY + (window.outerHeight - height) / 2;
+          window.open(data.authorizationUrl, "cobug_google_auth", `width=${width},height=${height},left=${left},top=${top}`);
+        } else {
+          throw new Error("Unable to start Google sign-in.");
+        }
+      } catch (err) {
+        showToast("Google Login", err.message || "Failed to start Google sign-in.", "⚠️", "rose");
+      }
+    }
+
+    // Email Sign In handler
     async function handleSignIn(e) {
       e.preventDefault();
-      const email = document.getElementById("signin-email").value.trim();
-      const password = document.getElementById("signin-password").value;
+      const emailInput = document.getElementById("signin-email");
+      const passwordInput = document.getElementById("signin-password");
+      const email = emailInput.value.trim().toLowerCase();
+      const password = passwordInput.value;
       const submitBtn = document.getElementById("btn-submit-signin");
+
+      if (!email || !email.includes("@")) {
+        signinError.textContent = "Please enter a valid email address.";
+        signinError.classList.remove("hidden");
+        emailInput.focus();
+        return;
+      }
 
       submitBtn.disabled = true;
       submitBtn.textContent = "Signing In...";
@@ -709,12 +979,12 @@
         const resp = await fetch(`${API_BASE}/auth/login`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ emailOrUsername: email, password }),
+          body: JSON.stringify({ email: email, password: password }),
         });
 
-        const data = await resp.json();
+        const data = await resp.json().catch(() => ({}));
         if (!resp.ok) {
-          throw new Error(data.message || "Invalid email or password.");
+          throw new Error(data.message || data.error || "Invalid email or password.");
         }
 
         authToken = data.token;
@@ -726,17 +996,116 @@
         updateUserUI();
         showToast("Signed In", `Welcome back, ${userEmail}`, "✓", "emerald");
 
+        fetchUserPlan();
+
         if (pendingPlan) {
           const planToCheckout = pendingPlan;
           pendingPlan = "";
           initiateCheckout(planToCheckout);
         }
       } catch (err) {
-        signinError.textContent = err.message || "Sign in failed.";
+        signinError.textContent = err.message || "Sign in failed. Please try again.";
         signinError.classList.remove("hidden");
       } finally {
         submitBtn.disabled = false;
         submitBtn.textContent = "Sign In & Continue";
+      }
+    }
+
+    // Step 1: Send Registration OTP
+    async function handleSendRegisterOtp(e) {
+      e.preventDefault();
+      const name = document.getElementById("reg-name").value.trim();
+      const email = document.getElementById("reg-email").value.trim().toLowerCase();
+      const password = document.getElementById("reg-password").value;
+      const btn = document.getElementById("btn-send-reg-otp");
+      const errorBox = document.getElementById("reg-error");
+
+      if (!email || !email.includes("@")) {
+        errorBox.textContent = "Please enter a valid email address.";
+        errorBox.classList.remove("hidden");
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = "Sending verification code...";
+      errorBox.classList.add("hidden");
+
+      try {
+        const resp = await fetch(`${API_BASE}/auth/register/send-otp`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, email, password }),
+        });
+
+        const data = await resp.json().catch(() => ({}));
+        if (!resp.ok) {
+          throw new Error(data.message || "Unable to send verification code.");
+        }
+
+        registerChallengeId = data.challengeId;
+        document.getElementById("reg-form-step-1").classList.add("hidden");
+        document.getElementById("reg-form-step-2").classList.remove("hidden");
+        document.getElementById("reg-otp-email-label").textContent = email;
+        showToast("Code Sent", `We sent a 6-digit verification code to ${email}`, "✉️", "cyan");
+      } catch (err) {
+        errorBox.textContent = err.message || "Failed to send code.";
+        errorBox.classList.remove("hidden");
+      } finally {
+        btn.disabled = false;
+        btn.textContent = "Send Verification Code";
+      }
+    }
+
+    // Step 2: Verify Registration OTP
+    async function handleVerifyRegisterOtp(e) {
+      e.preventDefault();
+      const otp = document.getElementById("reg-otp").value.trim();
+      const btn = document.getElementById("btn-verify-reg-otp");
+      const errorBox = document.getElementById("reg-error-2");
+
+      if (!otp || otp.length !== 6) {
+        errorBox.textContent = "Please enter the 6-digit code.";
+        errorBox.classList.remove("hidden");
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = "Verifying & Creating Account...";
+      errorBox.classList.add("hidden");
+
+      try {
+        const resp = await fetch(`${API_BASE}/auth/register/verify-otp`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ challengeId: registerChallengeId, otp }),
+        });
+
+        const data = await resp.json().catch(() => ({}));
+        if (!resp.ok) {
+          throw new Error(data.message || "Invalid verification code.");
+        }
+
+        authToken = data.token;
+        userEmail = data.email || document.getElementById("reg-email").value.trim().toLowerCase();
+        localStorage.setItem("cobug_website_token", authToken);
+        localStorage.setItem("cobug_website_email", userEmail);
+
+        signinModal.classList.add("hidden");
+        updateUserUI();
+        showToast("Account Created", `Welcome to COBUG, ${userEmail}!`, "✓", "emerald");
+
+        if (pendingPlan) {
+          const planToCheckout = pendingPlan;
+          pendingPlan = "";
+          initiateCheckout(planToCheckout);
+        }
+      } catch (err) {
+        errorBox.textContent = err.message || "Verification failed.";
+        errorBox.classList.remove("hidden");
+      } finally {
+        btn.disabled = false;
+        btn.textContent = "Verify & Complete";
       }
     }
 
@@ -746,6 +1115,7 @@
         pendingPlan = plan;
         signinModal.classList.remove("hidden");
         signinError.classList.add("hidden");
+        switchAuthTab("signin");
         showToast("Account Required", "Please sign in to link this subscription to your COBUG account.", "🔒", "cyan");
         return;
       }
@@ -769,10 +1139,11 @@
           updateUserUI();
           pendingPlan = plan;
           signinModal.classList.remove("hidden");
+          switchAuthTab("signin");
           throw new Error("Your login session expired. Please sign in again.");
         }
 
-        const orderData = await orderResp.json();
+        const orderData = await orderResp.json().catch(() => ({}));
         if (!orderResp.ok) {
           throw new Error(orderData.message || "Unable to create payment order.");
         }
@@ -817,12 +1188,13 @@
                 }),
               });
 
-              const verifyData = await verifyResp.json();
+              const verifyData = await verifyResp.json().catch(() => ({}));
               if (!verifyResp.ok || !verifyData.success) {
                 throw new Error(verifyData.message || "Payment signature verification failed.");
               }
 
               hideProcessing();
+              fetchUserPlan();
               showSuccess(plan);
             } catch (vErr) {
               hideProcessing();
@@ -844,6 +1216,24 @@
         showToast("Checkout Error", err.message || "Unable to start checkout.", "⚠️", "rose");
       }
     }
+
+    function showProcessing(title, desc) {
+      procTitle.textContent = title;
+      procDesc.textContent = desc;
+      processingModal.classList.remove("hidden");
+    }
+
+    function hideProcessing() {
+      processingModal.classList.add("hidden");
+    }
+
+    function showSuccess(plan) {
+      const isPro = plan === "pro";
+      successPlanName.textContent = isPro ? "COBUG Pro" : "COBUG Plus";
+      successUserEmail.textContent = userEmail || "your account";
+      successModal.classList.remove("hidden");
+    }
+  </script>
 
     function showProcessing(title, desc) {
       procTitle.textContent = title;
