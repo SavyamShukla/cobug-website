@@ -448,7 +448,7 @@
         ✓
       </div>
 
-      <span class="mt-4 inline-block rounded-full bg-emerald-500/20 px-3 py-1 text-[11px] font-bold text-emerald-300 uppercase tracking-wider border border-emerald-500/30">
+      <span id="success-plan-badge" class="mt-4 inline-block rounded-full bg-emerald-500/20 px-3 py-1 text-[11px] font-bold text-emerald-300 uppercase tracking-wider border border-emerald-500/30">
         Payment Verified &amp; Activated
       </span>
 
@@ -458,7 +458,7 @@
 
       <p class="mt-2 text-xs text-slate-300 leading-relaxed max-w-sm mx-auto">
         Your subscription has been verified and applied to your account (<strong id="success-user-email" class="text-white"></strong>).
-        All features and AI on Editor are now fully unlocked.
+        <span id="success-features-text" class="block mt-1 text-slate-200"></span>
       </p>
 
       <div class="mt-6 rounded-2xl border border-white/10 bg-white/[0.04] p-4 text-xs text-left space-y-2 text-slate-300">
@@ -468,7 +468,7 @@
         </div>
         <p>1. Open your <strong>COBUG Desktop App</strong>.</p>
         <p>2. Your app detects your new plan automatically.</p>
-        <p>3. In Code Editor, click <strong>COBUG AI</strong> to enjoy autonomous coding!</p>
+        <p id="success-step-3">3. In Code Editor, click <strong>COBUG AI</strong> to enjoy autonomous coding!</p>
       </div>
 
       <div class="mt-6 flex flex-col sm:flex-row gap-3">
@@ -1228,27 +1228,33 @@
     }
 
     function showSuccess(plan) {
-      const isPro = plan === "pro";
-      successPlanName.textContent = isPro ? "COBUG Pro" : "COBUG Plus";
+      const isPro = String(plan || "").toLowerCase() === "pro";
+      const planTitle = isPro ? "COBUG Pro" : "COBUG Plus";
+      successPlanName.textContent = planTitle;
       successUserEmail.textContent = userEmail || "your account";
-      successModal.classList.remove("hidden");
-    }
-  </script>
 
-    function showProcessing(title, desc) {
-      procTitle.textContent = title;
-      procDesc.textContent = desc;
-      processingModal.classList.remove("hidden");
-    }
+      const featuresText = document.getElementById("success-features-text");
+      const step3 = document.getElementById("success-step-3");
+      const badge = document.getElementById("success-plan-badge");
 
-    function hideProcessing() {
-      processingModal.classList.add("hidden");
-    }
+      if (isPro) {
+        if (badge) badge.textContent = "COBUG PRO ACTIVATED";
+        if (featuresText) {
+          featuresText.innerHTML = "<strong>AI on Code Editor (Antigravity Mode)</strong> and autonomous multi-file code editing are now fully unlocked!";
+        }
+        if (step3) {
+          step3.innerHTML = "3. In Code Editor, click <strong>COBUG AI</strong> to enjoy autonomous coding &amp; inline diffs!";
+        }
+      } else {
+        if (badge) badge.textContent = "COBUG PLUS ACTIVATED";
+        if (featuresText) {
+          featuresText.innerHTML = "<strong>Deep Code Context inspection</strong> and multi-model intelligence in Chat AI are now active. <span class='text-slate-400 block mt-1'><em>(Note: AI on Code Editor is exclusive to the Pro plan.)</em></span>";
+        }
+        if (step3) {
+          step3.innerHTML = "3. In <strong>AI Chat</strong>, ask questions with full project code context inspection enabled!";
+        }
+      }
 
-    function showSuccess(plan) {
-      const isPro = plan === "pro";
-      successPlanName.textContent = isPro ? "COBUG Pro" : "COBUG Plus";
-      successUserEmail.textContent = userEmail || "your account";
       successModal.classList.remove("hidden");
     }
   </script>
